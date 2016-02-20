@@ -16,21 +16,18 @@ using namespace std;
 struct WATF
 {
 
-	unsigned long IP_SRC;
-	unsigned long IP_DEST;
+	ULONG IP_SRC;
+	ULONG IP_DEST;
 	int MSG_LEN;
-	char MSG[200];
+	char MSG[500];
 
 
-	WATF(unsigned long ip_SRC,
-		 unsigned long ip_DEST,
-		 int msg_LEN,
-		 char msg[])
+	WATF()
 	{
-		IP_SRC = ip_SRC;
-		IP_DEST = ip_DEST;
-		MSG_LEN = msg_LEN;
-		strcpy_s(MSG, msg);
+		IP_SRC = 0;
+		IP_DEST = 0;
+		MSG_LEN = 0;
+		strcpy_s(MSG, "");
 	}
 };
 
@@ -41,14 +38,13 @@ struct WATF
 
 class Client
 {
-	SOCKET		Socket;
+
 	SOCKET		Socketlisten;
-	SOCKET		Socketmesg;
+	SOCKET		SocketSend;
 	WSADATA		ws;
-	sockaddr_in	sockaddrin;
-	sockaddr_in	sock_bind;
-	sockaddr_in	sock_bind2;
-	sockaddr_in	new_ca;
+	sockaddr_in	sockaddrListen;
+	sockaddr_in	sockaddrSend;
+
 	char ip[21];
 	int port;
 
@@ -61,13 +57,14 @@ public :
 	}
 
 private :
-	void sendMessageThread();
-	
+	void listenmsgThread();
 public :
+
+
 	void listenmsg();
-	void sendMessage();
+	void sendMessage(WATF message);
 	
-	bool connectServer(char *Ip, int Port);
+	void setConfigtServer(char *Ip, int Port);
 	char *getIp()
 	{
 		return ip;

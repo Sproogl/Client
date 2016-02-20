@@ -16,25 +16,21 @@ int main(int argc, char* argv[])
 {
 	char Ip[] = { "127.0.0.1" };
 	int port = 1322;
-	string message("hello");
+
 	char messageC[500];
-	WATF *wtf = new WATF(10,10,10,"123456789");
+	WATF message;
 
 
 	Client *client = new Client();
 
-	if (client->connectServer(Ip, port) == false)
-	{
-		cout << "error conection";
+	client->setConfigtServer(Ip, port);
 
-	}
-	else{
-		client->sendMessage();
-		while (true)
-		{
-			client->listenmsg();
-			
-		}
+	client->listenmsg();
+	while(true){
+
+		cin >> message.MSG;
+		client->sendMessage(message);
+
 	}
 	_getch();
 	return 0;

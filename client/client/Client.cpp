@@ -6,101 +6,137 @@ value ip and port
 if connection error then return false
 else return true
 */
-bool Client::connectServer(char *Ip , int Port)        
+
+/*
+
+
+проверка версии winsock2 if (FAILED(WSAStartup(0x0002, &ws))) return false;
+
+
+Создать сокет : имя сокета = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)
+
+созать sockadr 
+
+адрес_сервера.sin_family = AF_INET;
+
+адрес_сервера.sin_addr.S_un.S_addr = inet_addr(ip);
+
+адрес_сервера.sin_port = htons(u_short(port));
+
+
+подключаемся к северу  : connect(имя_сокета, (sockaddr*)&адрес_сервера, sizeof(адрес_сервера))
+
+
+отправить сообщение : send(имя_сокета, (char*)&сообщение, sizeof(struct WATF) + 1, 0)
+
+
+Принять сообщение : recv(имя_сокета, (char*)&перменная_куда_положить_сообщение, длинна сообщения, 0))
+
+
+*/
+
+
+void Client::setConfigtServer(char *Ip, int Port)  // задаёт параметры подключения к серверу
 {
-	strcpy_s(ip, Ip);
-	port = Port;
-	if (FAILED(WSAStartup(0x0002, &ws))) return false;
+
+	strcpy_s(ip,Ip);
+	port = port;
 
 
-	if (INVALID_SOCKET == (Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)))
-		ZeroMemory(&sock_bind, sizeof(sock_bind));
 
-
-	sock_bind.sin_family = AF_INET;
-	sock_bind.sin_addr.S_un.S_addr = inet_addr(ip);
-	sock_bind.sin_port = htons(u_short(port));
-	if (connect(Socket, (sockaddr*)&sock_bind, sizeof(sock_bind)) == SOCKET_ERROR) {
-		return false;
-
-	}
-	
-	return true;
 }
-
 
 
 void Client::listenmsg()
 {
-	char buff[200];
-	// Создаём сокет
+	thread listenTh(&Client::listenmsgThread, this);
+	if (listenTh.joinable()) listenTh.join();
+	listenTh.
+
+}
+
+
+
+void Client::listenmsgThread()
+{
+
+	WATF message;
+	int msgLen;
+
 	if (INVALID_SOCKET == (Socketlisten = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)))
 
 		// Выполняем привязку
-		ZeroMemory(&sock_bind2, sizeof(sock_bind2));
-	sock_bind2.sin_family = AF_INET;
-	sock_bind2.sin_addr.S_un.S_addr = inet_addr(ip);
-
-	sock_bind2.sin_port = htons(1322);				// Порт 1234
-
+		ZeroMemory(&sockaddrListen, sizeof(sockaddrListen));
+	sockaddrListen.sin_family = AF_INET;
+	sockaddrListen.sin_addr.S_un.S_addr = inet_addr(ip);
+	sockaddrListen.sin_port = htons(port);				
 
 
-	bind(Socketlisten, (sockaddr*)&sock_bind2, sizeof(sock_bind2));
-
-
-	// Устанавливаем "слушающий" режим для сокета
-	if (FAILED(listen(Socketlisten, 10)))
-	{
+	if (connect(Socketlisten, (sockaddr*)&sockaddrListen, sizeof(sockaddrListen)) == SOCKET_ERROR) {
+		cout << "Error connection to server in listenMessage";
 		return;
+
 	}
 
-	while (1)
-	{
-		ZeroMemory(&new_ca, sizeof(new_ca));
-		int new_len = sizeof(new_ca);
-		printf("Wait for incoming connections...\n");
-		if (FAILED(Socketmesg = accept(Socketlisten, (sockaddr*)&new_ca, &new_len)))
-		{
+	message.IP_SRC = 322;
+	message.MSG[0] = '0';
+	message.MSG[1] = '\0';
 
-			return ;
-		}
-		int msg_len;
-		if (FAILED(msg_len = recv(Socketmesg, (char*)&buff, 200, 0)))
+
+
+	if (send(Socketlisten, (char*)&message , sizeof(struct WATF), 0) == SOCKET_ERROR)
+	{
+		std::cout << "error_send";
+
+	}
+
+
+	while (true)
+	{
+
+		if (FAILED(msgLen = recv(Socketlisten, (char*)&message, sizeof(struct WATF), 0)))
 			break;
-		WATF *wtf;
-		wtf = (WATF *)&buff;
-		// Печатем сообщение.
-		std::cout << wtf->MSG << std::endl;
-	}
-	closesocket(Socketmesg);
 
-}
-
-
-
-void Client::sendMessageThread()
-{
-	char message[200];
-
-
-	while (1)
-	{
-		cin.getline(message,200);
-		WATF wtf(10, 11, 12, message);
-		char * test = (char *)&wtf;
-		if (send(Socket, test, sizeof(struct WATF) + 1, 0) == SOCKET_ERROR)
+		if (message.MSG_LEN > 500 || message.MSG_LEN < 0)
 		{
-			std::cout << "error_send";
-
+			continue;
 		}
+		msgLen = message.MSG_LEN;
+
+		message.MSG[msgLen] = '\0';
+
+		cout << message.MSG<<endl;
 
 	}
+
+	cout << "closed connection";
+	closesocket(Socketlisten);
+
 }
 
 
-void Client::sendMessage()
-{
-	thread thread2(&Client::sendMessageThread, this);
-	if (thread2.joinable()) thread2.detach();
 
+
+void Client::sendMessage(WATF message)
+{
+	if (INVALID_SOCKET == (SocketSend = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)))
+	ZeroMemory(&sockaddrSend, sizeof(sockaddrSend));
+	sockaddrSend.sin_family = AF_INET;
+	sockaddrSend.sin_addr.S_un.S_addr = inet_addr(ip);
+	sockaddrSend.sin_port = htons(port);
+	
+	
+	if (connect(SocketSend, (sockaddr*)&sockaddrSend, sizeof(sockaddrSend)) == SOCKET_ERROR) {
+		cout << "Error connection to server in sendmessage";
+		return;
+
+	}
+
+	message.MSG_LEN = strlen(message.MSG);
+	
+	send(SocketSend, (char*)&message, sizeof(struct WATF),0);
+
+
+
+	closesocket(SocketSend);
 }
