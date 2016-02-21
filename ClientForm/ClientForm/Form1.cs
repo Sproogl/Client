@@ -1,47 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Threading;
 using System.Runtime.InteropServices;
-namespace ConsoleApplication5
+
+namespace ClientForm
 {
-
-
-  public struct WATF
+    public partial class Form1 : Form
     {
 
-      public int ID_SRC;
-      public int ID_DEST;
-      public int MSG_LEN;
-      public string MSG;
 
 
-	   public WATF(int i)
+        public struct WATF
+        {
 
-	        {
-		        ID_SRC = i;
-		        ID_DEST = 0;
-		        MSG_LEN = 0;
+            public int ID_SRC;
+            public int ID_DEST;
+            public int MSG_LEN;
+            public string MSG;
+
+
+            public WATF(int i)
+            {
+                ID_SRC = i;
+                ID_DEST = 0;
+                MSG_LEN = 0;
                 MSG = "\0";
-	        }
+            }
 
 
 
-    }
+        }
 
 
 
-    public class Client
-    {
-
-        Socket socketSend, socketRecv;
+         Socket socketSend, socketRecv;
         string ip;
         int port;
 
-       public Client(string ip , int port)
+        public void SetConfig(string ip, int port)
         {
             this.ip = ip;
             this.port = port;
@@ -60,13 +64,13 @@ namespace ConsoleApplication5
             {
 
                 socketSend.Connect(ip, port);
-          
+
                 socketSend.Send(buffer);
 
             }
-            catch(SocketException e)
+            catch (SocketException e)
             {
-                Console.WriteLine("Eror send message");
+                // Console.WriteLine("Eror send message");
             }
             socketSend.Close();
         }
@@ -105,14 +109,16 @@ namespace ConsoleApplication5
         public void listenMesg()
         {
 
-            Thread sendThread = new Thread(listenMesgThread);
-            sendThread.Start();
+            new Thread(listenMesgThread) { IsBackground = true }.Start(); 
+            
 
 
         }
 
-       private void listenMesgThread()
+        private void listenMesgThread()
         {
+
+      
 
             WATF watfMessage = new WATF(1);
 
@@ -126,33 +132,57 @@ namespace ConsoleApplication5
             try
             {
 
-                socketRecv.Connect(ip,port);
+                socketRecv.Connect(ip, port);
 
                 socketRecv.Send(buffer);
 
 
-                while(true)
+                while (true)
                 {
 
                     socketRecv.Receive(buffer);
-                   WATF buff = BytesToStruct(buffer);
-                    if(buff.MSG_LEN > 500 || buff.MSG_LEN < 0)
+
+                    WATF buff = BytesToStruct(buffer);
+                   
+                    if (buff.MSG_LEN > 500 || buff.MSG_LEN < 0)
                     {
                         continue;
                     }
 
-                   Console.WriteLine(buff.MSG);
+                    textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server "+ ip));
+
+                    // Console.WriteLine(buff.MSG);
 
                 }
 
 
             }
-             catch(SocketException e)
+            catch (SocketException e)
             {
-                Console.WriteLine("Eror listen message");
+                textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+                // Console.WriteLine("Eror listen message");
             }
             socketRecv.Close();
         }
-       
+
+
+        public Form1()
+        {
+            InitializeComponent();
+            string ip = "127.0.0.1";
+            int port = 1322;
+            SetConfig(ip, port);
+            listenMesg();
+        }
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sendMessage(textBox1.Text);
+            textBox2.Text += Environment.NewLine + textBox1.Text;
+            textBox1.Clear();
+        }
+
     }
 }
