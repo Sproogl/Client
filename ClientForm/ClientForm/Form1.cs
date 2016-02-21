@@ -92,14 +92,32 @@ namespace ClientForm
 
         private static WATF BytesToStruct(byte[] arr)   // in WATF
         {
-            int size = Marshal.SizeOf(typeof(WATF));
 
-            IntPtr buffer = Marshal.AllocHGlobal(size);
-            Marshal.Copy(arr, 0, buffer, size);
-            var myStruct = (WATF)Marshal.PtrToStructure(buffer, typeof(WATF));
-            Marshal.FreeHGlobal(buffer);
+
+
+            // Создаем объект
+            var myStruct = new WATF();
+            // Выделяем под него память
+            var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(WATF)));
+            /* Копируем созданный объект в выделенный
+             * участок памяти, и при этом не хотим
+             * чтобы блок памяти перед этим очищался */
+            Marshal.StructureToPtr(myStruct, ptr, false);
+            // Записываем в первые четыре байта выделенной
+            // памяти, т.е. в поле i1, значение 10
+            Marshal.WriteInt32(ptr, 0xA);
+            // Копируем структуру обратно в ex
+            myStruct = (WATF)Marshal.PtrToStructure(ptr, typeof(WATF));
+            // Освобождаем память!
+            Marshal.FreeHGlobal(ptr);
+
+
 
             return myStruct;
+
+
+
+
         }
 
 
@@ -121,7 +139,7 @@ namespace ClientForm
       
 
             WATF watfMessage = new WATF(1);
-
+            WATF buff;
             watfMessage.MSG = "0";
             watfMessage.MSG_LEN = 0;
 
@@ -142,7 +160,7 @@ namespace ClientForm
 
                     socketRecv.Receive(buffer);
 
-                    WATF buff = BytesToStruct(buffer);
+                    buff = BytesToStruct(buffer);
                    
                     if (buff.MSG_LEN > 500 || buff.MSG_LEN < 0)
                     {
