@@ -20,7 +20,7 @@ namespace ClientForm
 
         public struct WATF
         {
-
+            public byte type;
             public int ID_SRC;
             public int ID_DEST;
             public int MSG_LEN;
@@ -29,6 +29,7 @@ namespace ClientForm
 
             public WATF(int i)
             {
+                type = 121;
                 ID_SRC = i;
                 ID_DEST = 0;
                 MSG_LEN = 0;
@@ -76,8 +77,9 @@ namespace ClientForm
         }
 
 
-        private static byte[] StructToBytes(WATF myStruct)   // in Byte[]
+        private static byte[] StructToBytes(WATF myStruct1)   // in Byte[]
         {
+            WATF myStruct = myStruct1;
             int size = Marshal.SizeOf(myStruct);
             byte[] arr = new byte[size];
 
@@ -92,24 +94,23 @@ namespace ClientForm
 
         private static WATF BytesToStruct(byte[] arr)   // in WATF
         {
+            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(WATF)));
+            WATF myStruct = new WATF(1);
+            try
+            {
 
 
+                Marshal.StructureToPtr(myStruct, pnt, false);
+                Marshal.Copy(arr, 0, pnt, Marshal.SizeOf(typeof(WATF)));
+                myStruct = (WATF)Marshal.PtrToStructure(pnt, typeof(WATF));
 
-            // Создаем объект
-            var myStruct = new WATF();
-            // Выделяем под него память
-            var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(WATF)));
-            /* Копируем созданный объект в выделенный
-             * участок памяти, и при этом не хотим
-             * чтобы блок памяти перед этим очищался */
-            Marshal.StructureToPtr(myStruct, ptr, false);
-            // Записываем в первые четыре байта выделенной
-            // памяти, т.е. в поле i1, значение 10
-            Marshal.WriteInt32(ptr, 0xA);
-            // Копируем структуру обратно в ex
-            myStruct = (WATF)Marshal.PtrToStructure(ptr, typeof(WATF));
-            // Освобождаем память!
-            Marshal.FreeHGlobal(ptr);
+
+            }
+            finally
+            {
+               
+                Marshal.FreeHGlobal(pnt);
+            }
 
 
 
@@ -127,7 +128,9 @@ namespace ClientForm
         public void listenMesg()
         {
 
-            new Thread(listenMesgThread) { IsBackground = true }.Start(); 
+            Task t = Task.Run(() => listenMesgThread());
+      
+           // new Thread(listenMesgThread) { IsBackground = true }.Start(); 
             
 
 
@@ -140,10 +143,12 @@ namespace ClientForm
 
             WATF watfMessage = new WATF(1);
             WATF buff;
-            watfMessage.MSG = "0";
+            watfMessage.MSG = "hello";
             watfMessage.MSG_LEN = 0;
 
             byte[] buffer = StructToBytes(watfMessage);
+
+            buff = BytesToStruct(buffer);
 
             socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
@@ -151,7 +156,7 @@ namespace ClientForm
             {
 
                 socketRecv.Connect(ip, port);
-
+                textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
                 socketRecv.Send(buffer);
 
 
@@ -160,15 +165,18 @@ namespace ClientForm
 
                     socketRecv.Receive(buffer);
 
-                    buff = BytesToStruct(buffer);
-                   
-                    if (buff.MSG_LEN > 500 || buff.MSG_LEN < 0)
+
+                    if(buffer[0] != 121)
                     {
                         continue;
                     }
+                    buff = BytesToStruct(buffer);
+                   
+                   
+                  
 
-                    textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server "+ ip));
-
+                    textBox2.Invoke(new Action(() => textBox2.Text += Environment.NewLine + ip +"  "+ buff.MSG));
+                  
                     // Console.WriteLine(buff.MSG);
 
                 }
