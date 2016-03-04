@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace ClientForm
 {
@@ -17,7 +18,7 @@ namespace ClientForm
     public partial class Form1 : Form
     {
 
-
+        public byte[] status = { 100, 101, 102 };
 
 
 
@@ -26,6 +27,7 @@ namespace ClientForm
         Socket socketSend, socketRecv;
         string ip;
         int port;
+        int ID;
 
         public void SetConfig(string ip, int port)
         {
@@ -153,63 +155,146 @@ namespace ClientForm
 
 
 
-            WATF watfMessage = new WATF(1);
+            WATF watfMessage = new WATF(100);
             WATF newmessage;
 
-            watfMessage.info.MSG_LEN = 0;
-            int size = Marshal.SizeOf(watfMessage);
-            byte[] buffer = StructToBytes(watfMessage);
-            byte[] recvmessange = new byte[520];
-      
+          
+     
 
             socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
+
+            if(getIdfromXML() == 0)
+            {
+                watfMessage = new WATF(status[1]);
+            }
+            else
+            {
+                ID = getIdfromXML();
+                watfMessage = new WATF(status[2]);
+            }
+
+            byte[] recvmessange = new byte[520];
+
+                                try
+                                {
+
+                                     socketRecv.Connect(ip, port);
+                                     byte[] bytemessange = StructToBytes(watfMessage);
+                                     socketRecv.Send(bytemessange);
+
+                                }
+
+                                catch (SocketException e)
+                                {
+                                    textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+                                    // Console.WriteLine("Eror listen message");
+                                    socketRecv.Close();
+                                    return;
+                                }
+
+            while (true)
+            {
+
+                socketRecv.Receive(recvmessange);
+
+                switch (recvmessange[0])
+                {
+
+                    case (100):
+                        {
+                            ID = getIDfromByte(recvmessange);
+                            if (ID != 0)
+                            {
+                                setIdtoXML(ID);
+                                textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
+                            }
+                          
+                            break;
+                        }
+                    case (101):
+                        {
+                            textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
+                            break;
+                        }
+                    case (102):
+                        {
+                            newmessage = BytesToStruct(recvmessange);
+                            textBox2.Invoke(new Action(() => textBox2.Text += Environment.NewLine + newmessage.MSG));
+                            
+                            break;
+
+                        }
+
+
+                    default: break;       
+                }
+                if (ID == 0) break;
+            }
+
+            socketRecv.Close();
+            textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+        }
+                
+            
+        public int getIDfromByte(byte [] arr)
+        {
+            WATF message;
+            int id;
+
+            message = BytesToStruct(arr);
+           try
+           {
+
+            id = Convert.ToInt32(message.MSG);
+
+           }
+
+            catch(FormatException e)
+           {
+               return 0;
+           }
+
+            return id;
+        }
+
+        protected void setIdtoXML(int ID)
+        {
+
+            string fileName = "config.xml";
+         
+
+            XDocument doc = new XDocument(new XElement("person",
+                                                        new XElement("id", ID)));
+            doc.Save(fileName);
+
+        }
+
+
+        protected int getIdfromXML()
+        {
+
+            string fileName = "config.xml";
+            int id = 12345;
+
+            XDocument docin = XDocument.Load(fileName);
+
+            XElement element = docin.Root.Element("id");
             try
             {
 
-                socketRecv.Connect(ip, port);
-                textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
-
-
-
-                byte[] bytemessange = StructToBytes(watfMessage);
-
-                socketRecv.Send(bytemessange);
-
-
-                while (true)
-                {
-
-                    socketRecv.Receive(recvmessange);
-
-
-
-                    if (recvmessange[0] != 101)
-                    {
-                        continue;
-                    }
-                    newmessage = BytesToStruct(recvmessange);
-
-
-
-
-                    textBox2.Invoke(new Action(() => textBox2.Text += Environment.NewLine + newmessage.MSG));
-
-                    // Console.WriteLine(buff.MSG);
-
-                }
-
+                id = Convert.ToInt32(element.Value);
 
             }
-            catch (SocketException e)
+
+            catch (FormatException e)
             {
-                textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
-                // Console.WriteLine("Eror listen message");
+                return 0;
             }
-            socketRecv.Close();
+
+            return id;
         }
 
-        
 
     }
 

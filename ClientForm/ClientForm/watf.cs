@@ -40,6 +40,7 @@ namespace ClientForm
         {
             info = new msginfo(i);
             MSG = "connect";
+            info.MSG_LEN = MSG.Length;
         }
 
 
