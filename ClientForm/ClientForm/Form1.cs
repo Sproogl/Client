@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace ClientForm
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form , IClient
     {
 
 
@@ -31,10 +31,21 @@ namespace ClientForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            sendMessage(textBox1.Text);
+            uint ID_DEST = 0;
+            try
+            {
+               ID_DEST = Convert.ToUInt32(textBox3.Text);
+            }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("Введите id");
+               
+                return;
+            }
+            sendMessage(textBox1.Text, ID_DEST);
             textBox2.Text += Environment.NewLine + textBox1.Text;
             textBox1.Clear();
+            textBox3.Clear();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,15 +54,27 @@ namespace ClientForm
 
             if (e.KeyChar == 13)
             {
-                sendMessage(textBox1.Text);
+                uint ID_DEST = 0;
+                try
+                {
+                    ID_DEST = Convert.ToUInt32(textBox3.Text);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Введите id");
+
+                    return;
+                }
+                sendMessage(textBox1.Text, ID_DEST);
                 textBox2.Text += Environment.NewLine + textBox1.Text;
                 textBox1.Clear();
+                textBox3.Clear();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            sendMessage("disconnect");
+            sendMessage("disconnect", 0000);
         }
 
     }

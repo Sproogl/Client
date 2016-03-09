@@ -1,5 +1,7 @@
 
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -18,8 +20,8 @@
 struct WATF
 {
 	byte type;
-	int ID_SRC;
-	int ID_DEST;
+	unsigned int ID_SRC;
+	unsigned int ID_DEST;
 	int MSG_LEN;
 	char messange[500];
 
@@ -37,15 +39,14 @@ struct WATF
 
 };
 
-
-
-
-
-
-
-
-
-
+int hashing(char ip[50])
+{
+	std::string ID = ip;
+	std::hash<std::string> hash_fn;
+	unsigned int ID_hash = hash_fn(ID);
+	std::cout << ID_hash << '\n';
+	return ID_hash;
+}
 
 
 
@@ -56,9 +57,8 @@ int main(int argc, char* argv[])
 	WSADATA		ws;
 	sockaddr_in	sock_bind, new_ca;
 	int			new_len, i = 0;
-	char		buff[20];
-	WATF wtf;
-	WATF *buffer = new WATF();
+	char		buff[520];
+	WATF *mesg;
 	// Init 
 	bool flag = true;
 	std::cout << sizeof(WATF);
@@ -74,31 +74,23 @@ int main(int argc, char* argv[])
 	sock_bind.sin_addr.S_un.S_addr = htonl(INADDR_ANY);		
 
 	sock_bind.sin_port = htons(1332);				// Порт 1234
-	printf("Wait for incoming connections...\n");
-	if (SOCKET_ERROR == bind(s, (sockaddr*)&sock_bind, sizeof(sock_bind)))
-	{
-		return E_FAIL;
-	}
+	std::cout << ("Wait for incoming connections...\n");
+	bind(s, (sockaddr*)&sock_bind, sizeof(sock_bind));
+	
+
 
 	// Устанавливаем "слушающий" режим для сокета
+	while (1)
+	{
 	if (FAILED(listen(s, 10)))
 	{
 		return E_FAIL;
 	}
-	while (1)
-	{
+	
 
 		ZeroMemory(&new_ca, sizeof(new_ca));
 		new_len = sizeof(new_ca);
-		if (flag)
-		{ 
-			
-				if (FAILED(send_sock = accept(s, (sockaddr*)&new_ca, &new_len)))
-				{
 
-					return 0;
-				}
-				flag = false;
 
 				if (FAILED(new_conn = accept(s, (sockaddr*)&new_ca, &new_len)))
 				{
@@ -107,31 +99,48 @@ int main(int argc, char* argv[])
 				}
 		
 		
-		}
-		else
-		{
-			if (FAILED(new_conn = accept(s, (sockaddr*)&new_ca, &new_len)))
-			{
-
-				return 0;
-			}
-			
-
-		}
 		// Получаем сообщение от клиента
 		int msg_len;
+		unsigned int hash;
+		int radix= 10;
+		char *p;
 
-
-		if (FAILED(msg_len = recv(new_conn, (char*)&wtf, sizeof(struct WATF), 0)))
+		if (FAILED(msg_len = recv(new_conn, buff, sizeof(struct WATF), 0)))
 			return 0;
-		std::cout << "ID DEST : " << wtf.ID_DEST << std::endl << "ID SRC : " << wtf.ID_SRC << std::endl << "MSG LEN :" << wtf.ID_SRC << std::endl << "MESSANGE : " << wtf.messange << std::endl;
-		wtf.type = 101;
-		send(send_sock, (char*)&wtf, sizeof(struct WATF), 0);
-		closesocket(new_conn);
+		//std::cout << "ID DEST : " << wtf.ID_DEST << std::endl << "ID SRC : " << wtf.ID_SRC << std::endl << "MSG LEN :" << wtf.ID_SRC << std::endl << "MESSANGE : " << wtf.messange << std::endl;
+		//wtf.type = 101;
+		switch (buff[0])
+			{
+				case 100: //регистрация
+					std::cout << "              Registration" <<std:: endl;
+					mesg = (WATF*)&buff;
+					hash = hashing((char *)&new_ca.sin_addr);
+					mesg->ID_SRC = hash;
+					send(new_conn, (char*)mesg, sizeof(struct WATF), 0);
+		
+					break;
+				
+				 case 101://подключение
+					 std::cout << "              Connect" << std::endl;
+						break;
+						
+				 case 102://сообщение
+					 std::cout << "              New messange" << std::endl;
+					 mesg = (WATF*)&buff;
+					 std::cout << "ID_DEST = " << mesg->ID_DEST << std::endl;
+					 std::cout << "ID_SRC = " << mesg->ID_SRC << std::endl;
+					 std::cout << "message = " << mesg->messange << std::endl;
+					 std::cout << "MSG_LEN = " << mesg->MSG_LEN << std::endl;
+						 break;
+								
+				 case 103://отключение
+						 break;
+				default: break;
+			}
 
 	}
-
-	printf("\n\nDone!");
+	closesocket(new_conn);
+	std::cout << ("\n\nDone!");
 
 	return 0;
 }

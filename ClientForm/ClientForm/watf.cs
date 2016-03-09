@@ -12,16 +12,16 @@ namespace ClientForm
     {
 
         public byte type;   
-        public int ID_SRC;
-        public int ID_DEST;
+        public uint ID_SRC;
+        public uint ID_DEST;
         public int MSG_LEN;
 
             public msginfo(byte i)
         {
-            type = 100;
-            ID_SRC = i;
-            ID_DEST = i;
-            MSG_LEN = i;
+            type = i;
+            ID_SRC = 0;
+            ID_DEST = 0;
+            MSG_LEN = 0;
 
         }
 

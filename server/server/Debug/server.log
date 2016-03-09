@@ -1,3 +1,4 @@
 ﻿  main.cpp
-c:\users\denis\documents\visual studio 2013\projects\server\server\main.cpp(59): warning C4101: buff: неиспользованная локальная переменная
+c:\users\denis\documents\visual studio 2013\projects\server\server\main.cpp(56): warning C4101: send_sock: неиспользованная локальная переменная
+c:\users\denis\documents\visual studio 2013\projects\server\server\main.cpp(106): warning C4101: p: неиспользованная локальная переменная
   server.vcxproj -> C:\Users\Denis\Documents\Visual Studio 2013\Projects\server\Debug\server.exe
