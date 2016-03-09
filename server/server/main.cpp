@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <thread>
 #include <string.h>
+#include <map> 
 #pragma comment (lib, "ws2_32.lib")
 #pragma comment (lib, "mswsock.lib")
 
@@ -61,6 +62,8 @@ int main(int argc, char* argv[])
 	WATF *mesg;
 	// Init 
 	bool flag = true;
+	std::map <unsigned int, SOCKET> ClientList;
+
 	std::cout << sizeof(WATF);
 
 	if (FAILED(WSAStartup(0x0002, &ws))) return E_FAIL;
@@ -117,23 +120,41 @@ int main(int argc, char* argv[])
 					hash = hashing((char *)&new_ca.sin_addr);
 					mesg->ID_SRC = hash;
 					send(new_conn, (char*)mesg, sizeof(struct WATF), 0);
+					ClientList.insert(std::pair<unsigned int, SOCKET>(hash, new_conn));
 		
 					break;
 				
 				 case 101://подключение
+					 mesg = (WATF*)&buff;
 					 std::cout << "              Connect" << std::endl;
+					 ClientList.insert(std::pair<unsigned int, SOCKET>(mesg->ID_SRC, new_conn));
 						break;
 						
 				 case 102://сообщение
+				 {
 					 std::cout << "              New messange" << std::endl;
 					 mesg = (WATF*)&buff;
 					 std::cout << "ID_DEST = " << mesg->ID_DEST << std::endl;
 					 std::cout << "ID_SRC = " << mesg->ID_SRC << std::endl;
 					 std::cout << "message = " << mesg->messange << std::endl;
 					 std::cout << "MSG_LEN = " << mesg->MSG_LEN << std::endl;
-						 break;
+					 auto it = ClientList.find(mesg->ID_DEST);
+					 if (it == ClientList.end())
+					 {
+						 mesg->type = 104;
+						 send(new_conn, (char*)mesg, sizeof(struct WATF), 0);
+					 }
+					 else
+					 {
+						 send(it->second, (char*)mesg, sizeof(struct WATF), 0);
+
+					 }
+					 closesocket(new_conn);
+					 break;
+				 }
 								
 				 case 103://отключение
+					 closesocket(new_conn);
 						 break;
 				default: break;
 			}

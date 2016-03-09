@@ -21,7 +21,7 @@ namespace ClientForm
         public Form1()
         {
             InitializeComponent();
-            string ip = "127.0.0.1";
+            string ip = "192.168.1.5";
             int port = 1332;
             SetConfig(ip, port);
             listenMesg();
@@ -45,7 +45,7 @@ namespace ClientForm
             sendMessage(textBox1.Text, ID_DEST);
             textBox2.Text += Environment.NewLine + textBox1.Text;
             textBox1.Clear();
-            textBox3.Clear();
+            
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -68,7 +68,7 @@ namespace ClientForm
                 sendMessage(textBox1.Text, ID_DEST);
                 textBox2.Text += Environment.NewLine + textBox1.Text;
                 textBox1.Clear();
-                textBox3.Clear();
+                
             }
         }
 

@@ -11,6 +11,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
+using System.Globalization;
 
 namespace ClientForm
 {
@@ -153,7 +154,7 @@ namespace ClientForm
         public void listenMesgThread()
         {
 
-
+       
 
             WATF watfMessage = new WATF(100);
             WATF newmessage;
@@ -171,8 +172,12 @@ namespace ClientForm
             }
             else
             {
+
                 ID = getIdfromXML();
+              
+                label2.Invoke(new Action(() => label2.Text = ID.ToString()));
                 watfMessage = new WATF(status[CONNECT]);
+                watfMessage.info.ID_SRC = ID;
             }
 
             byte[] recvmessange = new byte[520];
@@ -217,6 +222,7 @@ namespace ClientForm
                             if (ID != 0)
                             {
                                 setIdtoXML(ID);
+                                label2.Invoke(new Action(() => label2.Text = ID.ToString()));
                                 textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
                             }
 
@@ -230,7 +236,7 @@ namespace ClientForm
                     case (102):
                         {
                             newmessage = BytesToStruct(recvmessange);
-                            textBox2.Invoke(new Action(() => textBox2.Text += Environment.NewLine + newmessage.MSG));
+                            textBox2.Invoke(new Action(() => textBox2.Text += Environment.NewLine +newmessage.info.ID_SRC +" : "+ newmessage.MSG));
 
                             break;
 
