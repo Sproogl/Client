@@ -28,10 +28,10 @@ namespace ClientForm
         int port;
         uint ID;
 
-        public void SetConfig(string ip, int port)
+        public void SetConfig()
         {
-            this.ip = ip;
-            this.port = port;
+            this.ip = getIpfromXML();
+            this.port = getPortfromXML();
 
         }
         public  void sendMessage(string message, uint ID_DEST)
@@ -193,12 +193,12 @@ namespace ClientForm
 
             catch (SocketException e)
             {
-                textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+                textBox4.Invoke(new Action(() => textBox4.Text = "Error conection to server " + ip));
                 // Console.WriteLine("Eror listen message");
                 socketRecv.Close();
                 return;
             }
-
+            textBox4.Invoke(new Action(() => textBox4.Text = "Connect " + ip));
             while (true)
             {
 
@@ -208,7 +208,7 @@ namespace ClientForm
                 }
                 catch(SocketException e)
                 {
-                    textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+                    textBox4.Invoke(new Action(() => textBox4.Text = "Error conection to server " + ip));
                     // Console.WriteLine("Eror listen message");
                     socketRecv.Close();
                     return;
@@ -223,14 +223,14 @@ namespace ClientForm
                             {
                                 setIdtoXML(ID);
                                 label2.Invoke(new Action(() => label2.Text = ID.ToString()));
-                                textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
+                                textBox4.Invoke(new Action(() => textBox4.Text = "Connect to server " + ip));
                             }
 
                             break;
                         }
                     case (101):
                         {
-                            textBox2.Invoke(new Action(() => textBox2.Text = "Connect to server " + ip));
+                            textBox4.Invoke(new Action(() => textBox4.Text = "Connect to server " + ip));
                             break;
                         }
                     case (102):
@@ -249,7 +249,7 @@ namespace ClientForm
             }
 
             socketRecv.Close();
-            textBox2.Invoke(new Action(() => textBox2.Text = "Error conection to server " + ip));
+            textBox4.Invoke(new Action(() => textBox4.Text = "Error conection to server " + ip));
         }
 
 
@@ -275,7 +275,9 @@ namespace ClientForm
 
 
             XDocument doc = new XDocument(new XElement("person",
-                                                        new XElement("id", ID)));
+                                                   new XElement("id", ID),
+                                                   new XElement("ip", port),
+                                                   new XElement("Port", ip)));
             doc.Save(fileName);
 
         }
@@ -297,7 +299,7 @@ namespace ClientForm
 
             }
 
-            catch (FormatException e)
+            catch (NullReferenceException e)
             {
                 return 0;
             }
@@ -305,6 +307,85 @@ namespace ClientForm
             return id;
         }
 
+        public void setPortToXML(int lport)
+        {
+
+            string fileName = "config.xml";
+
+
+            XDocument doc = new XDocument(new XElement("person",
+                                                        new XElement("id", ID),
+                                                        new XElement("ip", lport),
+                                                        new XElement("Port", ip)));
+            doc.Save(fileName);
+
+
+
+        }
+
+        public void setIpToXML(string lip)
+        {
+
+            string fileName = "config.xml";
+
+
+            XDocument doc = new XDocument(new XElement("person",
+                                                        new XElement("id", ID),
+                                                        new XElement("ip", port),
+                                                        new XElement("Port", lip)));
+            doc.Save(fileName);
+
+
+
+        }
+
+
+        public string getIpfromXML()
+        {
+
+            string fileName = "config.xml";
+            string ip;
+
+            XDocument docin = XDocument.Load(fileName);
+
+            XElement element = docin.Root.Element("ip");
+            try
+            {
+
+                ip = element.Value;
+
+            }
+
+            catch (NullReferenceException e)
+            {
+                return null;
+            }
+
+            return ip;
+        }
+        public int getPortfromXML()
+        {
+
+            string fileName = "config.xml";
+            int port = 12345;
+
+            XDocument docin = XDocument.Load(fileName);
+
+            XElement element = docin.Root.Element("port");
+            try
+            {
+
+                port = Convert.ToInt32(element.Value);
+
+            }
+
+            catch (NullReferenceException e)
+            {
+                return 0;
+            }
+
+            return port;
+        }
 
     }
 

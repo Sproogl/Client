@@ -16,7 +16,7 @@ namespace ClientForm
 {
     interface IClient
     {
-       void SetConfig(string obj, int obj1);
+       void SetConfig();
        void sendMessage(string obj, uint obj1);
        byte[] StructToBytes(WATF obj);
        WATF BytesToStruct(byte[] obj);
