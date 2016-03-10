@@ -81,26 +81,36 @@ namespace ClientForm
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            movemu = true;
+            base.Capture = false;
+            Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
             
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(movemu)
-            {
-                //this.Location = new Point((Cursor.Position.X - this.Location.X), (Cursor.Position.Y - this.Location.Y));
-            }
+          
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            movemu = false;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             listenMesg();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            setting windowset = new setting();
+            windowset.Show();
         }
 
     }

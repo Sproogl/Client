@@ -7,3 +7,4 @@ c:\users\denis\documents\visual studio 2013\Projects\ClientForm\ClientForm\obj\D
 c:\users\denis\documents\visual studio 2013\Projects\ClientForm\ClientForm\obj\Debug\ClientForm.csproj.GenerateResource.Cache
 c:\users\denis\documents\visual studio 2013\Projects\ClientForm\ClientForm\obj\Debug\ClientForm.exe
 c:\users\denis\documents\visual studio 2013\Projects\ClientForm\ClientForm\obj\Debug\ClientForm.pdb
+C:\Users\Denis\documents\visual studio 2013\Projects\ClientForm\ClientForm\obj\Debug\ClientForm.setting.resources
