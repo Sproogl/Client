@@ -16,16 +16,18 @@ namespace ClientForm
     public partial class Form1 : Form , IClient
     {
 
-        bool movemu;
+        public bool logIn;
 
         public Form1()
         {
             InitializeComponent();
+
+            logIn = false;
             //string ip = "192.168.1.5";
             //int port = 1332;
-            SetConfig();
             
-            movemu = false;
+            
+          
         }
 
 
@@ -75,7 +77,7 @@ namespace ClientForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            sendMessage("disconnect", 0000);
+           // sendMessage("disconnect", 0000);
             this.Close();
         }
 
@@ -99,6 +101,7 @@ namespace ClientForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            SetConfig();
             listenMesg();
         }
 
@@ -111,6 +114,11 @@ namespace ClientForm
         {
             setting windowset = new setting();
             windowset.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

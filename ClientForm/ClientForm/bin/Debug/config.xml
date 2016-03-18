@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <person>
   <id>1488</id>
-  <ip>192.168.1.5</ip>
+  <ip>127.0,01</ip>
   <port>1332</port>
-
 </person>

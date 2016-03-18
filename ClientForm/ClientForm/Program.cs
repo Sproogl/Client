@@ -8,15 +8,24 @@ namespace ClientForm
 {
     static class Program
     {
+       
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            bool status = false;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 mainwindow = new Form1();
+
+            Application.Run(new login(mainwindow));
+                        if(mainwindow.logIn)
+                        {
+                            Application.Run(new load());
+                            Application.Run(new Form1());
+                        }
 
 
 

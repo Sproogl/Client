@@ -20,9 +20,7 @@ namespace ClientForm
 
         private void label1_Click(object sender, EventArgs e)
         {
-            setIpToXML(textBox1.Text);
-            setPortToXML(textBox2.Text);
-            this.Close();
+          
         }
         public void setPortToXML(string lport)
         {
@@ -31,8 +29,8 @@ namespace ClientForm
 
             XDocument docin = XDocument.Load(fileName);
 
-            XElement element = docin.Root.Element("port");
-            element.Value = lport;
+            docin.Root.Element("port").Value = lport;
+
             docin.Save(fileName);
 
 
@@ -46,8 +44,8 @@ namespace ClientForm
 
             XDocument docin = XDocument.Load(fileName);
 
-            XElement element = docin.Root.Element("ip");
-            element.Value = lip;
+            docin.Root.Element("ip").Value = lip;
+          
             docin.Save(fileName);
 
 
@@ -56,6 +54,13 @@ namespace ClientForm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            setIpToXML(textBox1.Text);
+            setPortToXML(textBox2.Text);
             this.Close();
         }
     }
