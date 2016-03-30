@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="WpfControlLibrary2.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="53.716" Width="238.5">
+    <Grid Background="White">
+
+        <Image x:Name="Avatar" Source="Resources/default-avatar-plaid-shirt-guy.png" HorizontalAlignment="Left" Width="139"/>
+        <TextBlock x:Name="Nick" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Right"  Background="{x:Null}" Margin="0,12,114,18" Width="66" Foreground="#FF00A7D9" FontSize="16" Height="24"/>
+
+        <Button x:Name="PART_call" Content="C" Background="#FF75C379" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="139,14,81,18" Foreground="White" FontSize="13.333" RenderTransformOrigin="0.5,0.5" Click="PART_call_Click"/>
+        <Button x:Name="PART_message"  HorizontalAlignment="Stretch" Padding="2"
+                            Content="message"  VerticalAlignment="Stretch" Margin="162,14,10,18" BorderBrush="{x:Null}" Background="#FF164273" Foreground="White" Click="PART_message_Click"/>
+
+    </Grid>
+</UserControl>

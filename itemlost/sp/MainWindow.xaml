@@ -1,0 +1,31 @@
+﻿<Window x:Class="sp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sp"
+      
+        xmlns:wpfControlLibrary2="clr-namespace:WpfControlLibrary2;assembly=WpfControlLibrary2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="624.55">
+    <Grid>
+      
+        <Grid  Width="Auto" Margin="0,50,2,0">
+            <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="30"/>
+                </Rectangle.Effect>
+            </Rectangle>
+       <Rectangle Fill="#FF164273" Width="255" HorizontalAlignment="Right" ></Rectangle>
+        <ListBox x:Name="ListBox1" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,0,0,0" Grid.Row="1" BorderThickness="1,1,1,3" >
+
+        </ListBox>
+    </Grid>
+        <Grid  HorizontalAlignment="Right" VerticalAlignment="Top" Width="607" Height="50">
+            <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right"></Rectangle>
+            <Button x:Name="SendName"  Click="SendName_OnClick" Content="Add" VerticalAlignment="Center" HorizontalAlignment="Right"  Height="21" Background="#FF75C379" Foreground="White" Margin="0,13,17,16" ></Button>
+            <TextBox x:Name="NewnameBox" Width="200" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Right"   BorderBrush="Black" Background="White" FontSize="16" Foreground="Black" Margin="0,11,48,16" ></TextBox>
+        </Grid>
+    </Grid>
+</Window>
+

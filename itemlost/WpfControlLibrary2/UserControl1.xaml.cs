@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace WpfControlLibrary2
+{
+    /// <summary>
+    /// Логика взаимодействия для UserControl1.xaml
+    /// </summary>
+    public partial class UserControl1 : UserControl
+    {
+        public string status;
+        public int Index;
+        public event EventHandler<UserItemcontrolArgs> CallClick;
+        public event EventHandler<UserItemcontrolArgs> MessageClick; 
+        public UserControl1(string name, int index)
+        {
+            InitializeComponent();
+            status = "12345";
+            Nick.Text = name;
+            this.Index = index;
+
+        }
+        public UserControl1()
+        {
+            InitializeComponent();
+            status = "12345";
+            Index = 0;
+
+
+        }
+        public void setNick(string nick)
+        {
+            Nick.Text = nick;
+        }
+
+        public void setAvatar(BitmapImage avatar)
+        {
+            Avatar.Source = avatar;
+        }
+
+        protected void RaiseCallClick(string name)
+        {
+            if (CallClick != null)
+            {
+                CallClick(this, new UserItemcontrolArgs(name));
+            }
+        }
+
+        protected void RaiseMessageClick(string name)
+        {
+            if (MessageClick != null)
+            {
+                MessageClick(this, new UserItemcontrolArgs(name));
+            }
+        }
+        private void PART_call_Click(object sender, RoutedEventArgs e)
+        {
+           RaiseCallClick(Nick.Text);
+        }
+
+        private void PART_message_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseMessageClick(Nick.Text);
+        }
+    }
+
+    public class UserItemcontrolArgs : EventArgs
+    {
+        public UserItemcontrolArgs(string name)
+        {
+            this.name = name;
+        }
+
+        public  string name { private set; get; }
+    }
+}

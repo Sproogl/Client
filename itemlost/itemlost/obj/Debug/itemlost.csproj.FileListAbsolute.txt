@@ -1,0 +1,16 @@
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\bin\Debug\itemlost.exe.config
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\bin\Debug\itemlost.exe
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\bin\Debug\itemlost.pdb
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.csprojResolveAssemblyReference.cache
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\MainWindow.g.cs
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\App.g.cs
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost_MarkupCompile.cache
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost_MarkupCompile.lref
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\MainWindow.baml
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.g.resources
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.Properties.Resources.resources
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.csproj.GenerateResource.Cache
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.exe
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\obj\Debug\itemlost.pdb
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\bin\Debug\UserListItem.dll
+c:\users\denis\documents\visual studio 2015\Projects\itemlost\itemlost\bin\Debug\UserListItem.pdb

@@ -1,0 +1,12 @@
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\bin\Debug\UserListItem.dll
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\bin\Debug\UserListItem.pdb
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem_MarkupCompile.cache
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem_MarkupCompile.lref
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\Themes\Generic.baml
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.g.resources
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.Properties.Resources.resources
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.csproj.GenerateResource.Cache
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.dll
+c:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.pdb
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserListItem\obj\Debug\UserListItem.csprojResolveAssemblyReference.cache
