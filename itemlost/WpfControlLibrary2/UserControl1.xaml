@@ -3,15 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" Height="53.716" Width="238.5">
+             mc:Ignorable="d" Height="50.216" Width="236.5">
     <Grid Background="White">
 
-        <Image x:Name="Avatar" Source="Resources/default-avatar-plaid-shirt-guy.png" HorizontalAlignment="Left" Width="139"/>
-        <TextBlock x:Name="Nick" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Right"  Background="{x:Null}" Margin="0,12,114,18" Width="66" Foreground="#FF00A7D9" FontSize="16" Height="24"/>
+        
+        <Grid HorizontalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
 
-        <Button x:Name="PART_call" Content="C" Background="#FF75C379" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="139,14,81,18" Foreground="White" FontSize="13.333" RenderTransformOrigin="0.5,0.5" Click="PART_call_Click"/>
-        <Button x:Name="PART_message"  HorizontalAlignment="Stretch" Padding="2"
-                            Content="message"  VerticalAlignment="Stretch" Margin="162,14,10,18" BorderBrush="{x:Null}" Background="#FF164273" Foreground="White" Click="PART_message_Click"/>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+               
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image x:Name="Avatar" Source="Resources/default-avatar-plaid-shirt-guy.png" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="51" Margin="0,-5,0,0" MouseDown="Avatar_OnMouseDown"/>
+        <TextBlock x:Name="Nick" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Right"  Background="{x:Null}"  Width="66" Foreground="#FF00A7D9" FontSize="16" Height="24" Margin="0,13,104,17"/>
+            <Button x:Name="PART_call" Content="C" Background="#FF75C379" VerticalContentAlignment="Center" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" FontSize="13.333"  Click="PART_call_Click" Margin="137,14,68,18"/>
+            <Button x:Name="PART_message"  HorizontalAlignment="Stretch" Padding="2"
+                            Content="message"  VerticalAlignment="Stretch" Margin="162,14,0,18" BorderBrush="{x:Null}" Background="#FF164273" Foreground="White" Click="PART_message_Click"/>
 
+        </Grid>
+       
     </Grid>
 </UserControl>

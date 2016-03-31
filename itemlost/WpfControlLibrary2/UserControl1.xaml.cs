@@ -22,8 +22,9 @@ namespace WpfControlLibrary2
     {
         public string status;
         public int Index;
-        public event EventHandler<UserItemcontrolArgs> CallClick;
-        public event EventHandler<UserItemcontrolArgs> MessageClick; 
+        public event EventHandler<UserItemcontrolArgs> CallClick;     // объявляем событие
+        public event EventHandler<UserItemcontrolArgs> MessageClick;  // объявляем событие
+        public event EventHandler<UserItemcontrolArgs> ClickAvatar;   // объявляем событие
         public UserControl1(string name, int index)
         {
             InitializeComponent();
@@ -56,27 +57,41 @@ namespace WpfControlLibrary2
             {
                 CallClick(this, new UserItemcontrolArgs(name));
             }
-        }
+        }              // Метод который вызывает событие
 
-        protected void RaiseMessageClick(string name)
+        protected void RaiseMessageClick(string name)              // Метод который вызывает событие
         {
             if (MessageClick != null)
             {
                 MessageClick(this, new UserItemcontrolArgs(name));
             }
         }
-        private void PART_call_Click(object sender, RoutedEventArgs e)
+
+        protected void RaiseAvatarClick(string name)
+        {
+            if (ClickAvatar != null)
+            {
+                ClickAvatar(this, new UserItemcontrolArgs(name));
+            }
+        }           // Метод который вызывает событие
+
+        private void PART_call_Click(object sender, RoutedEventArgs e)     // Стандартное событие нажатия на кнопку, которое вызывает  RaiseCallClick();
         {
            RaiseCallClick(Nick.Text);
-        }
+        } 
 
-        private void PART_message_Click(object sender, RoutedEventArgs e)
+        private void PART_message_Click(object sender, RoutedEventArgs e)  // Стандартное событие нажатия на кнопку, которое вызывает RaiseMessageClick();
         {
             RaiseMessageClick(Nick.Text);
         }
+
+        private void Avatar_OnMouseDown(object sender, MouseButtonEventArgs e)    // Стандартное событие нажатия на на картинку, которое вызывает RaiseAvatarClick();
+        {
+         RaiseAvatarClick(Nick.Text);  
+        }
     }
 
-    public class UserItemcontrolArgs : EventArgs
+    public class UserItemcontrolArgs : EventArgs   // класс которые мы передаём в качестве параметра события
     {
         public UserItemcontrolArgs(string name)
         {
