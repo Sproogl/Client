@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Win32;
 using WpfControlLibrary2;
-
+using UserChat;
 namespace sp
 {
     /// <summary>
@@ -22,8 +13,10 @@ namespace sp
     public partial class MainWindow : Window
     {
         List<UserControl1> Auser = new List<UserControl1>();
+        private bool online;
         public MainWindow()
         {
+            online = false;
             string[] Anick = new string[10];
             UserControl1[] AUser = new UserControl1[10];
             
@@ -45,7 +38,7 @@ namespace sp
             }
 
 
-
+            SetLoginStatus(true);
         }
 
         private void AddUser(string name)
@@ -54,8 +47,11 @@ namespace sp
             var newUser = new UserControl1(name, index);
             newUser.CallClick += UserControl1_OnCallClick;
             newUser.MessageClick += UserControl1_OnMessageClick;
+            newUser.ClickAvatar += UserControl1_OnClickAtatar;
             Auser.Add(newUser);
-            ListBox1.Items.Add(newUser);
+            UserList.Items.Add(newUser);
+            
+            
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -75,12 +71,61 @@ namespace sp
             MessageBox.Show(control.Index.ToString() +"   "+ e.name + "  MessageClick");
         }
 
+        private void UserControl1_OnClickAtatar(object sender, UserItemcontrolArgs e)
+        {
+            UserControl1 control = (UserControl1)sender;
+            MessageBox.Show(control.Index.ToString() + "   " + e.name + "  ClickAvatar");
+        }
+
         private void SendName_OnClick(object sender, RoutedEventArgs e)
         {
-            if (NewnameBox.Text != null)
+
+        }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+           this.DragMove();
+        }
+
+        private void BClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddfrendButton_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            AddUser("Test");
+        }
+
+        private void SetLoginStatus(bool status)
+        {
+            if (status)
             {
-                AddUser(NewnameBox.Text);
-                NewnameBox.Clear();
+                LoginStatus.Text = "Online";
+                LoginStatus.Background = Brushes.LightGreen;
+
+            }
+            else
+            {
+
+                LoginStatus.Text = "Offline";
+                LoginStatus.Background = Brushes.DarkGray;
+
+            }
+        }
+
+        private void LoginStatus_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SetLoginStatus(online);
+            if (online)
+            {
+                online = false;
+            }
+            else
+            {
+
+                online = true;
+
             }
         }
     }

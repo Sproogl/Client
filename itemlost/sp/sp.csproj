@@ -97,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UserChat\UserChat.csproj">
+      <Project>{ca4f3c3e-0d26-41ae-8e66-903aa8f8d5e8}</Project>
+      <Name>UserChat</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfControlLibrary2\WpfControlLibrary2.csproj">
       <Project>{1acffed4-bd76-4b0c-bdd9-76ba80fc962a}</Project>
       <Name>WpfControlLibrary2</Name>
@@ -107,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\phone-call-icon-h_icon_phone_b-1024x1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\plus_00000.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,3 +14,5 @@ C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\obj\Debug\sp.pd
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\bin\Debug\WpfControlLibrary2.dll
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\bin\Debug\WpfControlLibrary2.pdb
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\obj\Debug\sp.csprojResolveAssemblyReference.cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\bin\Debug\UserChat.dll
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\sp\bin\Debug\UserChat.pdb
