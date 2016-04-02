@@ -76,10 +76,10 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border BorderBrush="Gainsboro" BorderThickness="2,0,2,2">
+    <Border BorderBrush="Gainsboro" BorderThickness="1,0,1,2">
         <Grid x:Name="Programm">
-            <Grid x:Name="MasterPanel" HorizontalAlignment="Left" Width="568" Margin="0,24,0,0">
-                <chat:Userchat></chat:Userchat>
+            <Grid x:Name="MasterPanel" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
+                <chat:Userchat x:Name="Userchat1" HorizontalAlignment="Left" Width="568"></chat:Userchat>
             </Grid>
             <Grid x:Name="UserlistBar" Width="290" Margin="0,19,0,0" HorizontalAlignment="Right">
                 <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
@@ -91,14 +91,14 @@
                 <Grid x:Name="BodyUserList"  Margin="0,73,0,0" >
                     <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
                 </Grid>
-                <Grid x:Name="HederUserList"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="268" Height="67" Margin="0,5,0,0">
+                <Grid x:Name="HederUserList"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="268" Height="67" Margin="0,4,0,0">
                     <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right" Margin="0,0,0,0"></Rectangle>
                     <TextBlock Text="Contacts" Foreground="White" VerticalAlignment="Center" FontSize="30" Margin="43,0,102,5" Width="auto"></TextBlock>
                     <Image x:Name="AddfrendButton" Source="Resources/plus_00000.png" Width="29" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Margin="0,18,40,19" MouseDown="AddfrendButton_OnMouseDown"></Image>
                 </Grid>
             </Grid>
             <Grid x:Name="Title" Margin="0,0,0,331" Background="Gainsboro" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" VerticalAlignment="Top">
-                <Button x:Name="BClose" Width="28" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_OnClick" Margin="0,0,0,0" Style="{DynamicResource ButtonStyle1}" />
+                <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_OnClick" Margin="0,0,5,0" Style="{DynamicResource ButtonStyle1}" />
                 <TextBlock x:Name="LoginStatus" Text="Online" HorizontalAlignment="Left" Width="60" Background="#FF75C379" TextAlignment="Center" Foreground="White" Margin="58,0,0,0" MouseDown="LoginStatus_OnMouseDown"></TextBlock>
                 <Rectangle HorizontalAlignment="Left" Width="60" Fill="Black" >
                     <Rectangle.Effect>

@@ -11,5 +11,10 @@ namespace UserChat
         {
             InitializeComponent();
         }
+
+        public void setText(string text)
+        {
+            Text1.Text = text;
+        }
     }
 }

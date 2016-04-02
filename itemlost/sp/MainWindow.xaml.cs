@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
 using WpfControlLibrary2;
 using UserChat;
+
 namespace sp
 {
     /// <summary>
@@ -14,9 +16,15 @@ namespace sp
     {
         List<UserControl1> Auser = new List<UserControl1>();
         private bool online;
+        private System.Windows.Threading.DispatcherTimer timer;
+        private int MerginRight;
         public MainWindow()
         {
             online = false;
+            MerginRight = 0;
+            timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval= new TimeSpan(0,0,0,0,10);
+            timer.Tick += Timer_Tick;
             string[] Anick = new string[10];
             UserControl1[] AUser = new UserControl1[10];
             
@@ -39,6 +47,21 @@ namespace sp
 
 
             SetLoginStatus(true);
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (MerginRight >= 0)
+            {
+                MasterPanel.Margin = new Thickness(MerginRight, 20, 0,0);
+                MerginRight -= 20;
+            }
+            else
+            {
+                
+                timer.Stop();    
+                
+            }
         }
 
         private void AddUser(string name)
@@ -67,8 +90,11 @@ namespace sp
         }
         private void UserControl1_OnMessageClick(object sender, UserItemcontrolArgs e)
         {
-            UserControl1 control = (UserControl1)sender;
-            MessageBox.Show(control.Index.ToString() +"   "+ e.name + "  MessageClick");
+            MerginRight = 600;
+            MasterPanel.Margin = new Thickness(MerginRight, 20, 0, 0);
+            Userchat1.setText("Hello, " + e.name);
+           timer.Start();
+
         }
 
         private void UserControl1_OnClickAtatar(object sender, UserItemcontrolArgs e)
@@ -90,6 +116,7 @@ namespace sp
         private void BClose_OnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+
         }
 
         private void AddfrendButton_OnMouseDown(object sender, MouseButtonEventArgs e)
