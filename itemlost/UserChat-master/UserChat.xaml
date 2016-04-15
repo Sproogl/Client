@@ -1,0 +1,59 @@
+<UserControl x:Class="WpfControlLibrary2.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="53.716" Width="238.5">
+    <Grid Background="#FFFDFDFD" Margin="-140,-235,-106,-164" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Image x:Name="Avatar" Source="D:/Avatar.jpg " HorizontalAlignment="Left" Width="66" Margin="10,72,0,314" RenderTransformOrigin="0.74,-1.212" MouseDown="ClickAvatar"/>
+        <TextBlock x:Name="Nick" Text="Name"  Background="{x:Null}" Margin="80,72,0,0" Width="66" Foreground="#FF00A7D9" FontSize="16" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="Mail" Text="Mail"  Background="{x:Null}" Margin="80,110,0,0" Width="66" Foreground="#FF00A7D9" FontSize="16" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <Button x:Name="PART_call"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="178,77,0,0" Foreground="White" Click="PART_call_Click" Width="62" Height="62">
+            <Button.Template>
+                <ControlTemplate  TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF5EBB63"></Ellipse>
+                        <Image Grid.Row="0" Source="Comp.png"></Image>
+
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center" Foreground="White"
+                               VerticalAlignment="Center"></Label>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="PART_message"    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="272,77,0,0" Foreground="White" Click="PART_message_Click" Width="63" Height="62">
+            <Button.Template>
+                <ControlTemplate  TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF3786DC"></Ellipse>
+                        <Image Grid.Row="0" Source="phone.png"></Image>
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center" Foreground="White"
+                               VerticalAlignment="Center"></Label>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+        <Label x:Name="Chat" Width="432" HorizontalAlignment="Left" Margin="10,144,0,119" BorderBrush="#FFA8A4A4" BorderThickness="1" FontSize="13"   />
+
+        <Label x:Name="Message" Width="359" HorizontalAlignment="Left" Margin="10,358,0,25" BorderBrush="#FFA8A4A4" BorderThickness="1" FontSize="13"  />
+
+        <Button x:Name="SEND_message" FontSize="17" Foreground="White"  Width="68" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="374,358,0,0" Content="SEND" BorderBrush="#FF444343" Background="#FF9E9D9D" Click="ClikSend"/>
+
+        <Button x:Name="SMILE_message" FontSize="17"   Width="68" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="374,395,0,0" BorderBrush="#FF444343" Background="#FF34C7C0" Click="ClickSmile">
+           <Button.Template>
+            <ControlTemplate  TargetType="Button">
+                    <Grid  Background="#FF34C7C0">
+                        <Image Grid.Row="0"  Source="smile.jpg" ></Image>
+                    </Grid>
+            </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>
+    
+    

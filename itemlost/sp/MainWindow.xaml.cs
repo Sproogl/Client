@@ -14,10 +14,12 @@ namespace sp
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<UserControl1> Auser = new List<UserControl1>();
+        List<UserControls> Auser = new List<UserControls>();
+        
         private bool online;
         private System.Windows.Threading.DispatcherTimer timer;
         private int MerginRight;
+       
         public MainWindow()
         {
             online = false;
@@ -27,6 +29,7 @@ namespace sp
             timer.Tick += Timer_Tick;
             string[] Anick = new string[10];
             UserControl1[] AUser = new UserControl1[10];
+            Userchat[] AChat = new Userchat[10];
             
             Anick[0] = "Den";
             Anick[1] = "Pol";
@@ -44,9 +47,9 @@ namespace sp
 
                 AddUser(Anick[i]);
             }
+            SetConfig();
+            listenMesg();
 
-
-            SetLoginStatus(true);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -68,10 +71,13 @@ namespace sp
         {
             int index = Auser.Count;
             var newUser = new UserControl1(name, index);
+            var newChat = new Userchat(name);
+            newChat.setText(name);
+            var newUseritem = new UserControls(newUser,newChat,index);
             newUser.CallClick += UserControl1_OnCallClick;
             newUser.MessageClick += UserControl1_OnMessageClick;
             newUser.ClickAvatar += UserControl1_OnClickAtatar;
-            Auser.Add(newUser);
+            Auser.Add(newUseritem);
             UserList.Items.Add(newUser);
             
             
@@ -91,9 +97,12 @@ namespace sp
         private void UserControl1_OnMessageClick(object sender, UserItemcontrolArgs e)
         {
             MerginRight = 600;
+            UserControl1 send = (UserControl1) sender;
+            
+            Userchat  Userchat = Auser[send.Index].getitemchat();
             MasterPanel.Margin = new Thickness(MerginRight, 20, 0, 0);
-            Userchat1.setText("Hello, " + e.name);
-           timer.Start();
+            Userchat1.Copy(Userchat);
+            timer.Start();
 
         }
 
@@ -143,17 +152,47 @@ namespace sp
 
         private void LoginStatus_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            SetLoginStatus(online);
-            if (online)
-            {
-                online = false;
-            }
-            else
-            {
 
-                online = true;
 
-            }
+
+        }
+
+        private void Userchat1_OnClickSend(object sender, ChatItemcontrolArgs e)
+        {
+            Userchat chat = (Userchat) sender;
+            sendMessage(chat.getNewMessage(),chat.ID);
+            chat.AddMessagetoMessageList(e.name,chat.getNewMessage());
+            chat.clearNewMessageBox();
+            
         }
     }
+
+    public class UserControls
+    {
+        UserControl1 itemlist;
+        Userchat itemchat;
+        private int index;
+
+        public UserControls(UserControl1 itemList, Userchat itemChat , int ind)
+        {
+            itemlist = itemList;
+            itemchat = itemChat;
+            index = ind;
+        }
+
+        public UserControl1 getitemlist()
+        {
+            return itemlist;
+        }
+
+        public Userchat getitemchat()
+        {
+            return itemchat;
+        }
+
+        public int getIndex()
+        {
+            return index;
+        }
+}
 }

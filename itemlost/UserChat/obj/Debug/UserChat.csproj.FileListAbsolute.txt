@@ -9,3 +9,4 @@ C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.csproj.GenerateResource.Cache
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.dll
 C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.pdb
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.csprojResolveAssemblyReference.cache

@@ -79,7 +79,8 @@
     <Border BorderBrush="Gainsboro" BorderThickness="1,0,1,2">
         <Grid x:Name="Programm">
             <Grid x:Name="MasterPanel" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
-                <chat:Userchat x:Name="Userchat1" HorizontalAlignment="Left" Width="568"></chat:Userchat>
+                
+                <chat:Userchat x:Name="Userchat1" HorizontalAlignment="Left" Width="568" ClickSend="Userchat1_OnClickSend"></chat:Userchat>
             </Grid>
             <Grid x:Name="UserlistBar" Width="290" Margin="0,19,0,0" HorizontalAlignment="Right">
                 <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
@@ -99,7 +100,7 @@
             </Grid>
             <Grid x:Name="Title" Margin="0,0,0,331" Background="Gainsboro" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" VerticalAlignment="Top">
                 <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_OnClick" Margin="0,0,5,0" Style="{DynamicResource ButtonStyle1}" />
-                <TextBlock x:Name="LoginStatus" Text="Online" HorizontalAlignment="Left" Width="60" Background="#FF75C379" TextAlignment="Center" Foreground="White" Margin="58,0,0,0" MouseDown="LoginStatus_OnMouseDown"></TextBlock>
+                <TextBlock x:Name="LoginStatus" Text="Offline" HorizontalAlignment="Left" Width="60" Background="DarkGray" TextAlignment="Center" Foreground="White" Margin="58,0,0,0" MouseDown="LoginStatus_OnMouseDown"></TextBlock>
                 <Rectangle HorizontalAlignment="Left" Width="60" Fill="Black" >
                     <Rectangle.Effect>
                         <BlurEffect/>
