@@ -26,7 +26,6 @@ namespace sp
             uint ID;
 
 
-
             public ActionClient(MainWindow window)
             {
                 xml = new Xml("config.xml");
@@ -34,7 +33,6 @@ namespace sp
                 SetConfig();
                 listenMesg();
             }
-
             public void SetConfig()
             {
                 this.ip = xml.getIpfromXML();
@@ -42,12 +40,10 @@ namespace sp
                 ID = xml.getIdfromXML();
 
             }
-
             public uint getId()
             {
                 return ID;
             }
-
             public void SetConnectedUser()
             {
                 for (int i = 0; i < window.Auser.Count; i++)
@@ -62,11 +58,8 @@ namespace sp
                     socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
                     try
                     {
-
                         socketSend.Connect(ip, port);
-
                         socketSend.Send(message.StructToBytes());
-
                     }
                     catch (SocketException e)
                     {
@@ -75,7 +68,6 @@ namespace sp
                     socketSend.Close();
                 }
             }
-
             public void disconnectFromserver()
             {
                 WATF message = new WATF(MegType.DISCONNECT);
@@ -86,11 +78,8 @@ namespace sp
                 socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 try
                 {
-
                     socketSend.Connect(ip, port);
-
                     socketSend.Send(message.StructToBytes());
-
                 }
                 catch (SocketException e)
                 {
@@ -98,7 +87,6 @@ namespace sp
                 }
                 socketSend.Close();
             }
-
             public void sendMessage(string message, uint ID_DEST)
             {
                 WATF watfMessage = new WATF(MegType.MESSANGE);
@@ -106,16 +94,11 @@ namespace sp
                 watfMessage.MSG = message;
                 watfMessage.info.ID_DEST = ID_DEST;
                 watfMessage.info.ID_SRC = this.ID;
-
-
                 socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 try
                 {
-
                     socketSend.Connect(ip, port);
-
                     socketSend.Send(watfMessage.StructToBytes());
-
                 }
                 catch (SocketException e)
                 {
@@ -126,29 +109,13 @@ namespace sp
 
             public void listenMesg()
             {
-
                 Task t = Task.Run(() => listenMesgThread());
-
-                // new Thread(listenMesgThread) { IsBackground = true }.Start(); 
-
-
-
             }
-
             public void listenMesgThread() // подключаем слушающий сокет
             {
-
-
-
                 WATF watfMessage = new WATF(100);
                 WATF newmessage = new WATF();
-
-
-
-
                 socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
-
-
                 if (ID == 0)  // проверяем, есть ли у нас ID
                 {
                     watfMessage = new WATF(MegType.REGISTRATION);
@@ -156,51 +123,29 @@ namespace sp
                 }
                 else  // если есть то отправляем его на сервер
                 {
-
-
-
                     this.Dispatcher.BeginInvoke(new Action(() => window.SetToMYID(ID.ToString())));
                     watfMessage = new WATF(MegType.CONNECT);
                     watfMessage.info.ID_SRC = ID;
                 }
-
                 byte[] recvmessange = new byte[520];
-
                 try
                 {
-
                     socketRecv.Connect(ip, port);
                     byte[] bytemessange = watfMessage.StructToBytes();
                     socketRecv.Send(bytemessange);
-
                 }
-
                 catch (SocketException e)
                 {
                     this.Dispatcher.Invoke(new Action(() => window.SetLoginStatus(false)));
-
                     socketRecv.Close();
                     return;
                 }
                 this.Dispatcher.Invoke(new Action(() => window.SetLoginStatus(true)));
 
-
-                // *********************************************************************************************
-
-
-
                 Task t = Task.Run(() => SetConnectedUser()); // проверка списка контактов на подключение к серверу
-
-
-
-
-                // *********************************************************************************************
-
-
 
                 while (true)
                 {
-
                     try
                     {
                         socketRecv.Receive(recvmessange);
@@ -214,7 +159,6 @@ namespace sp
                     }
                     switch (recvmessange[0])
                     {
-
                         case (100):
                             {
                                 ID = getIDfromByte(recvmessange);
@@ -223,12 +167,10 @@ namespace sp
                                     xml.setIdtoXML(ID);
                                     this.Dispatcher.Invoke(new Action(() => window.SetLoginStatus(true)));
                                 }
-
                                 break;
                             }
                         case (101):
                             {
-
                                 this.Dispatcher.Invoke(new Action(() => window.SetLoginStatus(true)));
                                 break;
                             }
@@ -236,12 +178,8 @@ namespace sp
                             {
                                 newmessage.BytesToStruct(recvmessange);
                                 string Lmessage = newmessage.MSG.Remove(newmessage.info.MSG_LEN - 1);
-
                                 this.Dispatcher.Invoke(new Action(() => window.addMessageToAuser(newmessage.info.ID_SRC, newmessage.info.ID_SRC.ToString(), Lmessage)));
-
-
                                 break;
-
                             }
                         case (103):
                             {
@@ -251,37 +189,27 @@ namespace sp
                             {
                                 newmessage.BytesToStruct(recvmessange);
                                 this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(true, newmessage.info.ID_DEST)));
-
                                 break;
                             }
                         case (106):
                             {
                                 newmessage.BytesToStruct(recvmessange);
                                 this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(false, newmessage.info.ID_DEST)));
-
                                 break;
                             }
                         default: break;
                     }
                     if (ID == 0) break;
                 }
-
                 socketRecv.Close();
                 this.Dispatcher.Invoke(new Action(() => window.SetLoginStatus(false)));
             }
-
             public uint getIDfromByte(byte[] arr)
             {
                 WATF message = new WATF();
                 uint id;
-
                 message.BytesToStruct(arr);
-
-
                 id = message.info.ID_SRC;
-
-
-
                 return id;
             }
         }

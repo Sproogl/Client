@@ -15,7 +15,6 @@ namespace sp
 
     public partial class Client : IClient
     {
-
         protected ActionClient actionClient { get; }
 
         public uint getId()

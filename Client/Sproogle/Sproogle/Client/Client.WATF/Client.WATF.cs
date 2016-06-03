@@ -74,11 +74,7 @@ namespace sp
                 Marshal.StructureToPtr(myStruct, buffer, false);
                 Marshal.Copy(buffer, arr, 0, size);
                 Marshal.FreeHGlobal(buffer);
-
-
-
                 byte[] bytemessange = arr.Concat(byData).ToArray();
-
                 return bytemessange;
             }
 
@@ -110,36 +106,24 @@ namespace sp
                         byteinfo[i] = arr[i];
 
                     }
-
                     for (int i = sizeinfo; i < (arr.Length); i++)
                     {
 
                         msgbyte[i - sizeinfo] = arr[i];
 
                     }
-
                     Marshal.StructureToPtr(myStruct.info, pnt, false);
                     Marshal.Copy(byteinfo, 0, pnt, Marshal.SizeOf(typeof(msginfo)));
                     myStruct.info = (msginfo)Marshal.PtrToStructure(pnt, typeof(msginfo));
-
                     myStruct.MSG = System.Text.Encoding.UTF8.GetString(msgbyte);
-
-
                 }
                 finally
                 {
 
                     Marshal.FreeHGlobal(pnt);
                 }
-                this = myStruct;
-                
-
+                this = myStruct;              
             }
-
-
-
         }
-
-
     }
 }

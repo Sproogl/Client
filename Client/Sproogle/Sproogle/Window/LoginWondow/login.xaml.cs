@@ -10,12 +10,6 @@ using System.Windows.Input;
 
 namespace sp
 {
-    /// <summary>
-    /// Логика взаимодействия для login.xaml
-    /// </summary>
-    /// 
-
-
 
 
     public partial class login : Window
@@ -41,9 +35,6 @@ namespace sp
             timer.Interval = new TimeSpan(0, 0, 0, 0, 30);
             timer.Tick += Timer_Tick;
             timer.Start();
-          
-
-
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -59,7 +50,6 @@ namespace sp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
             socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
             byte[] recvmessange = new byte[520];
@@ -71,12 +61,10 @@ namespace sp
             }
             catch (SocketException ex)
             {
-
                 return;
             }
             switch (recvmessange[0])
             {
-
                 case (100):
                     {
                         ID = getIDfromByte(recvmessange);
@@ -86,18 +74,13 @@ namespace sp
                             window.Show();
                             socketRecv.Close();
                             this.Close();
-
                         }
-
                         break;
                     }
-                default: break;
-                    
+                default: break;   
             }
             socketRecv.Close();
             return;
-
-            
         }
 
         private void title_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -111,73 +94,52 @@ namespace sp
             {
                 socketRecv.Close();
             }
-            this.Close();
-            
-            
+            this.Close(); 
         }
         public string getIpfromXML()
         {
-
             string fileName = "config.xml";
             string ip;
-
             XDocument docin = XDocument.Load(fileName);
-
             XElement element = docin.Root.Element("ip");
             try
             {
-
                 ip = element.Value;
-
             }
-
             catch (NullReferenceException e)
             {
                 return null;
             }
-
             return ip;
         }
         public int getPortfromXML()
         {
-
             string fileName = "config.xml";
             int port = 12345;
-
             XDocument docin = XDocument.Load(fileName);
-
             XElement element = docin.Root.Element("port");
             try
             {
-
                 port = Convert.ToInt32(element.Value);
 
             }
-
             catch (NullReferenceException e)
             {
                 return 0;
             }
-            
             return port;
         }
+
         public void sendMessage(string message, uint ID_DEST)
         {
             Client.WATF watfMessage = new Client.WATF(Client.MegType.REGISTRATION);
-            
-            
             watfMessage.info.MSG_LEN = message.Length;
             watfMessage.MSG = message;
             watfMessage.info.ID_DEST = ID_DEST;
-            watfMessage.info.ID_SRC = this.ID;
-
-
-          
+            watfMessage.info.ID_SRC = this.ID;          
             try
             {
-
                 socketRecv.Connect(ip, port);
-
                 socketRecv.Send(watfMessage.StructToBytes());
 
             }
@@ -188,18 +150,13 @@ namespace sp
          
         }
 
-
-
-
         public uint getIDfromByte(byte[] arr)
         {
             Client.WATF message = new Client.WATF();
             uint id;
-
             message.BytesToStruct(arr);
             id = message.info.ID_SRC;
             return id;
         }
-
     }
 }

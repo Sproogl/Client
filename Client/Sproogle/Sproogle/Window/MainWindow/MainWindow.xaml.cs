@@ -114,26 +114,20 @@ namespace sp
             }
         }
 
-
         public void SetToMYID(string myid)
         {
             MYID.Text = myid;
         }
 
-
-
         public void SetUserConnect(bool st,uint id)
-        {
-           
+        {         
                 for (int i = 0; i < Auser.Count; i++)
                 {
                     if (Auser[i].getID() == id)
                     {
                         Auser[i].setIndicatorConnected(st); 
                     }
-
-                }
-            
+                }         
         }
 
         private void AddUser(string name, uint ID)
@@ -148,12 +142,8 @@ namespace sp
             newUser.ClickAvatar += UserControl1_OnClickAtatar;
             Auser.Add(newUseritem);
             UserList.Items.Add(newUser);
-            
-            
+ 
         }
-
-
-
 
         /// <summary>
         /// Save UserChat content in filies *** NEEDET FIX ***
@@ -168,14 +158,11 @@ namespace sp
                 chat.WriteMsgHistory();
             }
         }
-
-
         private void UserControl1_OnCallClick(object sender, UserItemcontrolArgs e)
         {
             ItemList control = (ItemList) sender;
             MessageBox.Show(control.Index.ToString()+"   "+e.name + "  CallClick");
         }
-
 
         private void UserControl1_OnMessageClick(object sender, UserItemcontrolArgs e)
         {
@@ -200,25 +187,19 @@ namespace sp
 
         }
 
-
-
         private void UserControl1_OnClickAtatar(object sender, UserItemcontrolArgs e)
         {
             ItemList control = (ItemList)sender;
             MessageBox.Show(control.Index.ToString() + "   " + e.name + "  ClickAvatar");
         }
 
-
         private void SendName_OnClick(object sender, RoutedEventArgs e)
-        {
-
-        }
+        { }
 
         private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
            this.DragMove();
         }
-
 
         private void BClose_OnClick(object sender, RoutedEventArgs e)
         {
@@ -226,15 +207,12 @@ namespace sp
             SetLoginStatus(false);
             savemesgHistory();
             this.Close();
-
         }
-
 
         private void AddfrendButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             AddUser("Test",(uint)0);
         }
-
 
         public void SetLoginStatus(bool status)
         {
@@ -242,22 +220,16 @@ namespace sp
             {
                 LoginStatus.Text = "Online";
                 LoginStatus.Background = Brushes.LightGreen;
-
             }
             else
             {
-
                 LoginStatus.Text = "Offline";
                 LoginStatus.Background = Brushes.DarkGray;
-
             }
         }
 
-
         private void LoginStatus_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
+        {}
 
         private void Userchat_Front_OnClickSend(object sender, ChatItemcontrolArgs e)
         {
@@ -265,13 +237,9 @@ namespace sp
             {
                 Userchat chat = (Userchat)sender;
                 client.sendMessage(chat.getNewMessage(), chat.getID());
-                addMessageToAuser(chat.getID(),client.getId().ToString(), chat.getNewMessage());
-             
-                
-                chat.clearNewMessageBox();
-                
-            }
-            
+                addMessageToAuser(chat.getID(),client.getId().ToString(), chat.getNewMessage());          
+                chat.clearNewMessageBox();   
+            }  
         }
 
 
@@ -298,11 +266,9 @@ namespace sp
                     {
                         Auser[i].setIndicatorNewMesg(true);
                     }
-                }
-                
+                }    
             }
         }
-
 
         private void Userchat_Front_EnterSend(object sender, ChatItemcontrolArgs e)
         {
@@ -311,15 +277,8 @@ namespace sp
                 Userchat chat = (Userchat)sender;
                 client.sendMessage(chat.getNewMessage(), chat.getID());
                 addMessageToAuser(chat.getID(), client.getId().ToString(), chat.getNewMessage());
-
-
                 chat.clearNewMessageBox();
-
             }
         }
     }
-
-
-
-    
 }
