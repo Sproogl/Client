@@ -1,0 +1,13 @@
+E:\itemlost\ClientXmlTest\bin\Debug\ClientXmlTest.dll
+E:\itemlost\ClientXmlTest\bin\Debug\ClientXmlTest.pdb
+E:\itemlost\ClientXmlTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\itemlost\ClientXmlTest\bin\Debug\sp.exe
+E:\itemlost\ClientXmlTest\bin\Debug\UserChat.dll
+E:\itemlost\ClientXmlTest\bin\Debug\sp.pdb
+E:\itemlost\ClientXmlTest\bin\Debug\UserChat.pdb
+E:\itemlost\ClientXmlTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+E:\itemlost\ClientXmlTest\obj\Debug\ClientXmlTest.csprojResolveAssemblyReference.cache
+E:\itemlost\ClientXmlTest\obj\Debug\ClientXmlTest.dll
+E:\itemlost\ClientXmlTest\obj\Debug\ClientXmlTest.pdb
+E:\itemlost\ClientXmlTest\bin\Debug\ItemList.dll
+E:\itemlost\ClientXmlTest\bin\Debug\ItemList.pdb

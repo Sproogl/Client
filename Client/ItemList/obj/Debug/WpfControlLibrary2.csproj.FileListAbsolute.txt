@@ -1,0 +1,21 @@
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\bin\Debug\WpfControlLibrary2.dll
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\bin\Debug\WpfControlLibrary2.pdb
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\UserControl1.baml
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\UserControl1.g.cs
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2_MarkupCompile.cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.g.resources
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.Properties.Resources.resources
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.csproj.GenerateResource.Cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.dll
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.pdb
+E:\itemlost\WpfControlLibrary2\bin\Debug\WpfControlLibrary2.dll
+E:\itemlost\WpfControlLibrary2\bin\Debug\WpfControlLibrary2.pdb
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.csprojResolveAssemblyReference.cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\UserControl1.baml
+E:\itemlost\WpfControlLibrary2\obj\Debug\UserControl1.g.cs
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2_MarkupCompile.cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.g.resources
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.Properties.Resources.resources
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.csproj.GenerateResource.Cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.dll
+E:\itemlost\WpfControlLibrary2\obj\Debug\WpfControlLibrary2.pdb

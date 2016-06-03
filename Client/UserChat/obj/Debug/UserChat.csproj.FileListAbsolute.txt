@@ -1,0 +1,23 @@
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\bin\Debug\UserChat.dll
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\bin\Debug\UserChat.pdb
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.csprojResolveAssemblyReference.cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserControl1.g.cs
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat_MarkupCompile.cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat_MarkupCompile.lref
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserControl1.baml
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.g.resources
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.Properties.Resources.resources
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.csproj.GenerateResource.Cache
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.dll
+C:\Users\Denis\documents\visual studio 2015\Projects\itemlost\UserChat\obj\Debug\UserChat.pdb
+E:\itemlost\UserChat\bin\Debug\UserChat.dll
+E:\itemlost\UserChat\bin\Debug\UserChat.pdb
+E:\itemlost\UserChat\obj\Debug\UserControl1.g.cs
+E:\itemlost\UserChat\obj\Debug\UserChat_MarkupCompile.cache
+E:\itemlost\UserChat\obj\Debug\UserChat_MarkupCompile.lref
+E:\itemlost\UserChat\obj\Debug\UserControl1.baml
+E:\itemlost\UserChat\obj\Debug\UserChat.g.resources
+E:\itemlost\UserChat\obj\Debug\UserChat.Properties.Resources.resources
+E:\itemlost\UserChat\obj\Debug\UserChat.csproj.GenerateResource.Cache
+E:\itemlost\UserChat\obj\Debug\UserChat.dll
+E:\itemlost\UserChat\obj\Debug\UserChat.pdb

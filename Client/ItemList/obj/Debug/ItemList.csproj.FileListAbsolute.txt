@@ -1,0 +1,11 @@
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.csproj.GenerateResource.Cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.csprojResolveAssemblyReference.cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList_MarkupCompile.cache
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.g.resources
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.Properties.Resources.resources
+E:\itemlost\WpfControlLibrary2\bin\Debug\ItemList.dll
+E:\itemlost\WpfControlLibrary2\bin\Debug\ItemList.pdb
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.dll
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.pdb
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.baml
+E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.g.cs
