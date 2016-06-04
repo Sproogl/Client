@@ -7,9 +7,7 @@ using System.IO;
 
 namespace Itemlist
 {
-    /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
-    /// </summary>
+
     public partial class ItemList : UserControl
     {
         public string status;
@@ -17,9 +15,9 @@ namespace Itemlist
         public int Index;
         private bool Indicator;
         private string MsgHistory;
-        public event EventHandler<UserItemcontrolArgs> CallClick;     // объявляем событие
-        public event EventHandler<UserItemcontrolArgs> MessageClick;  // объявляем событие
-        public event EventHandler<UserItemcontrolArgs> ClickAvatar;   // объявляем событие
+        public event EventHandler<UserItemcontrolArgs> CallClick;   
+        public event EventHandler<UserItemcontrolArgs> MessageClick; 
+        public event EventHandler<UserItemcontrolArgs> ClickAvatar;  
         public ItemList(string name, int index, uint ID)
         {
             InitializeComponent();
@@ -66,9 +64,9 @@ namespace Itemlist
             {
                 CallClick(this, new UserItemcontrolArgs(name));
             }
-        }              // Метод который вызывает событие
+        }  
 
-        protected void RaiseMessageClick(string name)              // Метод который вызывает событие
+        protected void RaiseMessageClick(string name)        
         {
             if (MessageClick != null)
             {
@@ -108,19 +106,19 @@ namespace Itemlist
             {
                 ClickAvatar(this, new UserItemcontrolArgs(name));
             }
-        }           // Метод который вызывает событие
+        }    
 
-        private void PART_call_Click(object sender, RoutedEventArgs e)     // Стандартное событие нажатия на кнопку, которое вызывает  RaiseCallClick();
+        private void PART_call_Click(object sender, RoutedEventArgs e)    
         {
            RaiseCallClick(Nick.Text);
         } 
 
-        private void PART_message_Click(object sender, RoutedEventArgs e)  // Стандартное событие нажатия на кнопку, которое вызывает RaiseMessageClick();
+        private void PART_message_Click(object sender, RoutedEventArgs e) 
         {
             RaiseMessageClick(Nick.Text);
         }
 
-        private void Avatar_OnMouseDown(object sender, MouseButtonEventArgs e)    // Стандартное событие нажатия на на картинку, которое вызывает RaiseAvatarClick();
+        private void Avatar_OnMouseDown(object sender, MouseButtonEventArgs e)   
         {
          RaiseAvatarClick(Nick.Text);  
         }
@@ -131,7 +129,7 @@ namespace Itemlist
         }
     }
 
-    public class UserItemcontrolArgs : EventArgs   // класс которые мы передаём в качестве параметра события
+    public class UserItemcontrolArgs : EventArgs  
     {
         public UserItemcontrolArgs(string name)
         {

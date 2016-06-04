@@ -44,7 +44,6 @@ namespace sp
 
             public WATF(byte i)
             {
-
                 info = new msginfo(i);
                 MSG = "connect";
                 info.MSG_LEN = MSG.Length;

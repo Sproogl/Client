@@ -7,30 +7,32 @@ using System.Windows;
 using System.Xml.Linq;
 using System.IO;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace sp
 {
 
-
-    public partial class login : Window
+    public partial class login : Window , ILoginWindow
     {
-        
+        Client.Xml configXml;
+        public Dispatcher Dispatcher = Dispatcher.CurrentDispatcher;
         private System.Windows.Threading.DispatcherTimer timer;
-        double height;
-        double x;
+        double _AnimationSlide_height;
+        double _AnimationSlide_x;
         uint ID;
         int port;
         string ip;
-        Socket socketRecv;
+        Socket socketRecv , socketSend;
         public login()
         {
             InitializeComponent();
             ID = 0;
-            x = -22.36;
-            height = 25;
+            configXml = new Client.Xml("config.xml");
+            _AnimationSlide_x = -22.36;
+            _AnimationSlide_height = 25;
             Window.Height = 25;
-            port = getPortfromXML();
-            ip = getIpfromXML();
+            port = configXml.getPortfromXML();
+            ip = configXml.getIpfromXML();
             timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 30);
             timer.Tick += Timer_Tick;
@@ -39,10 +41,10 @@ namespace sp
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            Window.Height = height;
-            height = -x*x+500;
-            x++;
-            if(x>0)
+            Window.Height = _AnimationSlide_height;
+            _AnimationSlide_height = -_AnimationSlide_x*_AnimationSlide_x+500;
+            _AnimationSlide_x++;
+            if(_AnimationSlide_x>0)
             {
                 timer.Stop();
             }
@@ -50,17 +52,21 @@ namespace sp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            registrationOnLink();
+        }
 
+       public void registrationOnLink()
+        {
+            socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
             byte[] recvmessange = new byte[520];
-            
             sendMessage(loginbox.Text + " " + passwordbox.Password, 0);
             try
             {
                 socketRecv.Receive(recvmessange);
             }
-            catch (SocketException ex)
+            catch (SocketException e)
             {
+                socketRecv.Close();
                 return;
             }
             switch (recvmessange[0])
@@ -70,17 +76,23 @@ namespace sp
                         ID = getIDfromByte(recvmessange);
                         if (ID != 0)
                         {
-                            MainWindow window = new MainWindow(ID);
-                            window.Show();
+                            Dispatcher.BeginInvoke(new Action(() => CreateMainWindow(ID)));
                             socketRecv.Close();
-                            this.Close();
+                            return;
                         }
                         break;
                     }
-                default: break;   
+                default: break;
             }
             socketRecv.Close();
             return;
+        }
+
+        void CreateMainWindow(uint ID)
+        {
+            MainWindow window = new MainWindow(ID);
+            window.Show();
+            this.Close();
         }
 
         private void title_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -96,42 +108,10 @@ namespace sp
             }
             this.Close(); 
         }
-        public string getIpfromXML()
-        {
-            string fileName = "config.xml";
-            string ip;
-            XDocument docin = XDocument.Load(fileName);
-            XElement element = docin.Root.Element("ip");
-            try
-            {
-                ip = element.Value;
-            }
-            catch (NullReferenceException e)
-            {
-                return null;
-            }
-            return ip;
-        }
-        public int getPortfromXML()
-        {
-            string fileName = "config.xml";
-            int port = 12345;
-            XDocument docin = XDocument.Load(fileName);
-            XElement element = docin.Root.Element("port");
-            try
-            {
-                port = Convert.ToInt32(element.Value);
-
-            }
-            catch (NullReferenceException e)
-            {
-                return 0;
-            }
-            return port;
-        }
 
         public void sendMessage(string message, uint ID_DEST)
         {
+            System.Threading.Thread.Sleep(1000);
             Client.WATF watfMessage = new Client.WATF(Client.MegType.REGISTRATION);
             watfMessage.info.MSG_LEN = message.Length;
             watfMessage.MSG = message;
@@ -145,9 +125,8 @@ namespace sp
             }
             catch (SocketException e)
             {
-                // Console.WriteLine("Eror send message");
+                // ERROR sending message
             }
-         
         }
 
         public uint getIDfromByte(byte[] arr)

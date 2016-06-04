@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Microsoft.Win32;
 using Itemlist;
 using UserChat;
+using System.IO;
 
 namespace sp
 {
@@ -146,7 +147,7 @@ namespace sp
         }
 
         /// <summary>
-        /// Save UserChat content in filies *** NEEDET FIX ***
+        /// Save UserChat content in filies
         /// </summary>
         /// <returns>
         /// </returns>
@@ -155,7 +156,17 @@ namespace sp
             for (int i = 0; i < Auser.Count; i++)
             {
                 Userchat chat = Auser[i].getitemchat();
-                chat.WriteMsgHistory();
+                try
+                {
+                    StreamWriter WFile = new StreamWriter("data/" + chat.getID() + ".mh", false);
+                    WFile.Write(chat.getMsgHistory());
+                    WFile.Close();
+                }
+                catch (Exception e)
+                {
+
+                }
+                
             }
         }
         private void UserControl1_OnCallClick(object sender, UserItemcontrolArgs e)

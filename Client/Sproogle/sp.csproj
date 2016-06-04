@@ -66,6 +66,7 @@
     <Compile Include="Sproogle\Client\Client\Client.cs" />
     <Compile Include="Sproogle\Client\Client\IClient.cs" />
     <Compile Include="Sproogle\Client\Client.Xml\Client.IXml.cs" />
+    <Compile Include="Sproogle\Window\LoginWondow\ILoginWindow.cs" />
     <Compile Include="Sproogle\Window\LoginWondow\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>

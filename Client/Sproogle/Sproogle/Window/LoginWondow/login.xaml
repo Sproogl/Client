@@ -10,7 +10,7 @@
         <Label Content="Sproogle" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="29.333" Height="63" Width="163" FontFamily="Segoe Print" Margin="284,109,253,0" RenderTransformOrigin="0.778,-0.16" />
         <PasswordBox x:Name="passwordbox" VerticalAlignment="Top" Margin="159,246,141,0" Background="#FF034357" BorderBrush="#FFBDBDBD" FontSize="13.333" Foreground="White" Height="24"  />
         <TextBox Text="LOGIN" x:Name="loginbox" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top"  Background="#FF034357" Foreground="White" BorderBrush="#FFBDBDBD" FontSize="16" Margin="159,217,141,0"/>
-        <Button x:Name="button" Content="login" HorizontalAlignment="Left" Margin="316,407,0,0" VerticalAlignment="Top" Width="86" Click="button_Click" Height="29" BorderBrush="#FFC5C5C5" Background="#FF034357" Foreground="White"  FontSize="14.667"/>
+        <Button x:Name="Blogin" Content="login" HorizontalAlignment="Left" Margin="316,407,0,0" VerticalAlignment="Top" Width="86" Click="button_Click" Height="29" BorderBrush="#FFC5C5C5" Background="#FF034357" Foreground="White"  FontSize="14.667"/>
         <Grid x:Name="title"  Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FFD4D4D4" MouseLeftButtonDown="title_MouseLeftButtonDown">
 
             <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_Click" Margin="0,0,7,0" />

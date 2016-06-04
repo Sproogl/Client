@@ -13,6 +13,10 @@ namespace sp
         {
             string fileName;
 
+
+            //
+            // Сводка:
+            //     Инициализирует новый экземпляр Client.Xml класс.
             public Xml(string filename)
             {
                 fileName = filename;
@@ -64,16 +68,11 @@ namespace sp
                 XDocument docin = XDocument.Load(fileName);
                 XElement id = docin.Root.Element("id");
                 XElement ip = docin.Root.Element("ip");
-
-
                 XDocument doc = new XDocument(new XElement("person",
                                                             id,
                                                             ip,
                                                             new XElement("port", lport)));
                 doc.Save(fileName);
-
-
-
             }
 
             public void setIpToXML(string lip)
@@ -82,33 +81,23 @@ namespace sp
                 XDocument docin = XDocument.Load(fileName);
                 XElement id = docin.Root.Element("id");
                 XElement port = docin.Root.Element("port");
-
                 XDocument doc = new XDocument(new XElement("person",
                                                             id,
                                                             new XElement("ip", lip),
                                                             port));
                 doc.Save(fileName);
-
-
-
             }
-
 
             public string getIpfromXML()
             {
 
                 string ip;
-
                 XDocument docin = XDocument.Load(fileName);
-
                 XElement element = docin.Root.Element("ip");
                 try
                 {
-
                     ip = element.Value;
-
                 }
-
                 catch (NullReferenceException e)
                 {
                     return null;
@@ -118,8 +107,6 @@ namespace sp
             }
             public int getPortfromXML()
             {
-
-
                 int port = 12345;
 
                 XDocument docin = XDocument.Load(fileName);
@@ -127,16 +114,13 @@ namespace sp
                 XElement element = docin.Root.Element("port");
                 try
                 {
-
                     port = Convert.ToInt32(element.Value);
-
                 }
 
                 catch (NullReferenceException e)
                 {
                     return 0;
                 }
-
                 return port;
             }
         }

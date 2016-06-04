@@ -5,9 +5,7 @@ using System.IO;
 
 namespace UserChat
 {
-    /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
-    /// </summary>
+
     public partial class Userchat : UserControl
     {
         private string Nick;
@@ -78,18 +76,9 @@ namespace UserChat
 
         }
 
-        public void WriteMsgHistory()
+        public string getMsgHistory()
         {
-            try
-            { 
-                StreamWriter WFile = new StreamWriter("data/" + ID.ToString() + ".mh", false);
-                WFile.Write(MessageList.Text);
-                WFile.Close();
-            }
-            catch (Exception e)
-            {
-
-            }
+            return MessageList.Text;
         }
 
         public event EventHandler<ChatItemcontrolArgs> ClickCall; // объявляем событие
