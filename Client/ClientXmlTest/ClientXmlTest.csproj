@@ -53,12 +53,6 @@
     <Compile Include="Xmltest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sproogle\sp.csproj">
-      <Project>{3e001970-69b8-4c9a-8292-92bd0df9744f}</Project>
-      <Name>sp</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

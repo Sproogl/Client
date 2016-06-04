@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientXmlTest", "ClientXmlT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemList", "ItemList\ItemList.csproj", "{1ACFFED4-BD76-4B0C-BDD9-76BA80FC962A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sp", "Sproogle\sp.csproj", "{3E001970-69B8-4C9A-8292-92BD0DF9744F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sp", "Sproogl\sp.csproj", "{3E001970-69B8-4C9A-8292-92BD0DF9744F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
