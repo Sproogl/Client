@@ -11,3 +11,16 @@ E:\itemlost\ClientXmlTest\obj\Debug\ClientXmlTest.dll
 E:\itemlost\ClientXmlTest\obj\Debug\ClientXmlTest.pdb
 E:\itemlost\ClientXmlTest\bin\Debug\ItemList.dll
 E:\itemlost\ClientXmlTest\bin\Debug\ItemList.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\ClientXmlTest.dll
+E:\client\Client\ClientXmlTest\bin\Debug\ClientXmlTest.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\client\Client\ClientXmlTest\bin\Debug\sp.exe
+E:\client\Client\ClientXmlTest\bin\Debug\ItemList.dll
+E:\client\Client\ClientXmlTest\bin\Debug\UserChat.dll
+E:\client\Client\ClientXmlTest\bin\Debug\sp.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\ItemList.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\UserChat.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.csprojResolveAssemblyReference.cache
+E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.dll
+E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.pdb

@@ -9,3 +9,14 @@ E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.dll
 E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.pdb
 E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.baml
 E:\itemlost\WpfControlLibrary2\obj\Debug\ItemList.g.cs
+E:\client\Client\ItemList\bin\Debug\ItemList.dll
+E:\client\Client\ItemList\bin\Debug\ItemList.pdb
+E:\client\Client\ItemList\obj\Debug\ItemList.csprojResolveAssemblyReference.cache
+E:\client\Client\ItemList\obj\Debug\ItemList.baml
+E:\client\Client\ItemList\obj\Debug\ItemList.g.cs
+E:\client\Client\ItemList\obj\Debug\ItemList_MarkupCompile.cache
+E:\client\Client\ItemList\obj\Debug\ItemList.g.resources
+E:\client\Client\ItemList\obj\Debug\Itemlist.Properties.Resources.resources
+E:\client\Client\ItemList\obj\Debug\ItemList.csproj.GenerateResource.Cache
+E:\client\Client\ItemList\obj\Debug\ItemList.dll
+E:\client\Client\ItemList\obj\Debug\ItemList.pdb

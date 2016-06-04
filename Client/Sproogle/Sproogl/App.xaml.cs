@@ -20,12 +20,12 @@ namespace sp
         }
         public void StartMaintWindow()
         {
-            this.StartupUri = new System.Uri("Sproogle/Window/MainWindow/MainWindow.xaml", System.UriKind.Relative);
+            this.StartupUri = new System.Uri("Sproogl/Window/MainWindow/MainWindow.xaml", System.UriKind.Relative);
         }
         private void InitializeComponent()
         {
             
-            this.StartupUri = new System.Uri("Sproogle\\Window\\LoginWondow\\login.xaml", System.UriKind.Relative);
+            this.StartupUri = new System.Uri("Sproogl\\Window\\LoginWondow\\login.xaml", System.UriKind.Relative);
             
         }
     }
