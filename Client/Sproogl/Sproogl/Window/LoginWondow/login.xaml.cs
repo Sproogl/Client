@@ -58,7 +58,7 @@ namespace sp
         {
             socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
             byte[] recvmessange = new byte[520];
-            sendMessage(loginbox.Text + " " + passwordbox.Password, 0);
+            sendMessage(loginbox.Text + "/" + passwordbox.Password + "\\" , 0);
             try
             {
                 socketRecv.Receive(recvmessange);

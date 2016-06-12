@@ -1,3 +1,0 @@
-﻿  Server.cpp
-c:\users\denis\documents\visual studio 2013\projects\server\server\server.cpp(173): warning C4101: hash: неиспользованная локальная переменная
-  server.vcxproj -> C:\Users\Denis\Documents\Visual Studio 2013\Projects\server\Debug\server.exe

@@ -28,7 +28,6 @@ namespace sp
 
         private bool connectStatus;
 
-
         private System.Windows.Threading.DispatcherTimer timer;
 
         Client client;
@@ -47,10 +46,10 @@ namespace sp
             Itemlist.ItemList[] AUser = new Itemlist.ItemList[10];
             Userchat[] AChat = new Userchat[10];
             
-            Anick[0] = "1488";
-            Aid[0] = 1488;
-            Anick[1] = "322";
-            Aid[1] = 322;
+            Anick[0] = "1";
+            Aid[0] = 1;
+            Anick[1] = "2";
+            Aid[1] = 2;
             Anick[2] = "Roma";
             Aid[2] = 333;
             Anick[3] = "Pasha";
@@ -68,7 +67,7 @@ namespace sp
             Anick[9] = "Alena";
             Aid[9] = 000;
             InitializeComponent();
-            client = new Client(this);
+            client = new Client(this,id);
             
             for (int i = 0; i < 9; i++)
             {

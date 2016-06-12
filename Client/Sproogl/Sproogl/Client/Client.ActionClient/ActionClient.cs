@@ -26,18 +26,18 @@ namespace sp
             uint ID;
 
 
-            public ActionClient(MainWindow window)
+            public ActionClient(MainWindow window , uint id)
             {
                 xml = new Xml("config.xml");
                 this.window = window;
                 SetConfig();
                 listenMesg();
+                ID = id;
             }
             public void SetConfig()
             {
                 this.ip = xml.getIpfromXML();
                 this.port = xml.getPortfromXML();
-                ID = xml.getIdfromXML();
 
             }
             public uint getId()

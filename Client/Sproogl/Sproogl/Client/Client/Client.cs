@@ -31,9 +31,9 @@ namespace sp
             actionClient.sendMessage(message,ID_DEST);
         }
 
-        public Client(MainWindow window)
+        public Client(MainWindow window , uint id)
         {
-            actionClient = new ActionClient(window);
+            actionClient = new ActionClient(window,id);
         }
 
     }
