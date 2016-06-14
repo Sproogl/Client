@@ -89,7 +89,7 @@ namespace sp
 
         void CreateMainWindow(uint ID)
         {
-            MainWindow window = new MainWindow(ID);
+            MainWindow window = new MainWindow(ID,loginbox.Text);
             window.Show();
             this.Close();
         }

@@ -11,12 +11,6 @@ namespace sp
 
 
 
-        /// <summary>
-        /// the server sends a list of friends to check on their online status
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        void SetConnectedUser();
 
 
         /// <summary>

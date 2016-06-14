@@ -16,12 +16,13 @@ namespace sp
         private int index;
         private uint ID;
 
-        public UserControls(ItemList itemList, Userchat itemChat, int ind, uint id)
+        public UserControls(ItemList itemList, Userchat itemChat, int ind, uint id , bool online)
         {
             itemlist = itemList;
             itemchat = itemChat;
             index = ind;
             ID = id;
+            setIndicatorConnected(online);
         }
         public void addMessage(string Unick, string mesg)
         {
@@ -32,6 +33,11 @@ namespace sp
         {
             itemlist.setConnected(st);
         }
+        public bool geticatorConnected()
+        {
+            return itemlist.isonline();
+        }
+
         public void setIndicatorNewMesg(bool ind)
         {
             itemlist.setIndictorMessage(ind);

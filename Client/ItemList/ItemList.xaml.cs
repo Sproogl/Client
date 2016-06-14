@@ -13,6 +13,7 @@ namespace Itemlist
         public string status;
         private uint ID;
         public int Index;
+        bool online;
         private bool Indicator;
         private string MsgHistory;
         public event EventHandler<UserItemcontrolArgs> CallClick;   
@@ -26,6 +27,7 @@ namespace Itemlist
             this.ID = ID;
             this.Index = index;
             Indicator = false;
+            online = false;
             
 
         }
@@ -92,12 +94,20 @@ namespace Itemlist
         {
             if (st)
             {
+                online = true;
                 GridPanel.Background = System.Windows.Media.Brushes.White;
             }
             else
             {
+                online = false;
                 GridPanel.Background = System.Windows.Media.Brushes.Silver;
             }
+        }
+
+
+        public bool isonline()
+        {
+            return online;
         }
 
         protected void RaiseAvatarClick(string name)

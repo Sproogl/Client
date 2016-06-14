@@ -24,14 +24,15 @@ namespace sp
         int _AnimationSlide_X;
         double _AnimationOpasity_X;
         double _AnimationOpasity_opasity;
-
+        bool isdownResize = false;
+        bool isdownwindow = false;
 
         private bool connectStatus;
 
         private System.Windows.Threading.DispatcherTimer timer;
 
         Client client;
-        public MainWindow(uint id)
+        public MainWindow(uint id, string login)
         {
             connectStatus = false;
             _AnimationSlide_MerginRight = 0;
@@ -43,41 +44,11 @@ namespace sp
             timer.Tick += Timer_Tick;
             string[] Anick = new string[10];
             uint[] Aid = new uint[10];
-            Itemlist.ItemList[] AUser = new Itemlist.ItemList[10];
-            Userchat[] AChat = new Userchat[10];
+
             
-            Anick[0] = "1";
-            Aid[0] = 1;
-            Anick[1] = "2";
-            Aid[1] = 2;
-            Anick[2] = "Roma";
-            Aid[2] = 333;
-            Anick[3] = "Pasha";
-            Aid[3] = 444;
-            Anick[4] = "Sveta";
-            Aid[4] = 555;
-            Anick[5] = "Sasha";
-            Aid[5] = 666;
-            Anick[6] = "Tom";
-            Aid[6] = 777;
-            Anick[7] = "Lera";
-            Aid[7] = 888;
-            Anick[8] = "Ann";
-            Aid[8] = 999;
-            Anick[9] = "Alena";
-            Aid[9] = 000;
             InitializeComponent();
-            client = new Client(this,id);
-            
-            for (int i = 0; i < 9; i++)
-            {
-                if (Aid[i] != client.getId())
-                {
-                    AddUser(Anick[i], Aid[i]);
-                }
-            }
-           
-            
+            client = new Client(this,id,login);
+             
 
         }
 
@@ -119,27 +90,40 @@ namespace sp
             MYID.Text = myid;
         }
 
-        public void SetUserConnect(bool st,uint id)
-        {         
-                for (int i = 0; i < Auser.Count; i++)
-                {
-                    if (Auser[i].getID() == id)
-                    {
-                        Auser[i].setIndicatorConnected(st); 
-                    }
-                }         
+        public void SetUserConnect(bool st,string name,uint id)
+        {
+            AddUser(name, id, st);       
         }
 
-        private void AddUser(string name, uint ID)
+        private void AddUser(string name, uint ID , bool online)
         {
+            
+
             int index = Auser.Count;
+            for(int i = 0; i <index; i++)
+            {
+                if (Auser[i].getID() == ID)
+                {
+                    if(Auser[i].geticatorConnected() == online)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Auser[i].setIndicatorConnected(online);
+                        return;
+                    }
+                }
+            }
+
             var newUser = new ItemList(name, index, ID);
             var newChat = new Userchat(name,ID);
             newChat.setText(name);
-            var newUseritem = new UserControls(newUser,newChat,index,ID);
+            var newUseritem = new UserControls(newUser,newChat,index,ID,online);
             newUser.CallClick += UserControl1_OnCallClick;
             newUser.MessageClick += UserControl1_OnMessageClick;
             newUser.ClickAvatar += UserControl1_OnClickAtatar;
+
             Auser.Add(newUseritem);
             UserList.Items.Add(newUser);
  
@@ -221,7 +205,7 @@ namespace sp
 
         private void AddfrendButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddUser("Test",(uint)0);
+            
         }
 
         public void SetLoginStatus(bool status)
@@ -289,6 +273,32 @@ namespace sp
                 addMessageToAuser(chat.getID(), client.getId().ToString(), chat.getNewMessage());
                 chat.clearNewMessageBox();
             }
+        }
+
+        private void borderResizer_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isdownResize = true;
+            isdownwindow = true;
+        }
+
+        private void borderResizer_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed && isdownResize && isdownwindow)
+            {
+                Point y = e.GetPosition(this);
+                double newy = y.Y+4;
+                this.Height = newy;
+            }
+        }
+
+        private void borderResizer_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            isdownResize = false;
+        }
+
+        private void Programm_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isdownwindow = true;
         }
     }
 }
