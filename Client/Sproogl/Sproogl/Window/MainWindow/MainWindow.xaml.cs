@@ -7,6 +7,8 @@ using Microsoft.Win32;
 using Itemlist;
 using UserChat;
 using System.IO;
+using SearchFriendPanel;
+using FoundItemList;
 
 namespace sp
 {
@@ -47,9 +49,50 @@ namespace sp
 
             
             InitializeComponent();
+            search_panel.Visibility = Visibility.Hidden;
             client = new Client(this,id,login);
+            search_panel.AddFriend += Search_panel_AddFriend;
+            search_panel.SearchClick += Search_panel_SearchClick;
              
 
+        }
+
+        private void Search_panel_SearchClick(object sender, UserItemcontrolArgs e)
+        {
+            client.SendSearchFriend(e.name);
+        }
+
+        private void Search_panel_AddFriend(object sender, FoundItemArgs e)
+        {
+            try {
+                UserList.Items.Remove(sender);
+                client.SendRequestOnFriend(e.name, e.id);
+                search_panel.Visibility = Visibility.Hidden;
+            }catch(InvalidOperationException ex)
+            {
+
+            }
+        }
+
+       
+
+        public void AddrequestInList(string name, uint id)
+        {
+            FoundItem item = new FoundItem(name, id);
+            item.Addclick += Item_Addclick;
+            UserList.Items.Add(item);
+        }
+
+        public void AddrequestInsearchPanel(string name, uint id)
+        {
+            search_panel.AddUser(name, id);
+        }
+
+        private void Item_Addclick(object sender, FoundItemArgs e)
+        {
+            
+            client.SendAcceptOnFriend(e.name, e.id);
+            UserList.Items.Remove(sender);
         }
 
 
@@ -205,7 +248,12 @@ namespace sp
 
         private void AddfrendButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            if(search_panel.Visibility == Visibility.Hidden)
+            search_panel.Visibility = Visibility.Visible;
+            else
+            {
+                search_panel.Visibility = Visibility.Hidden;
+            }
         }
 
         public void SetLoginStatus(bool status)

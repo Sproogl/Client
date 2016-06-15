@@ -14,7 +14,8 @@ namespace sp
             void connection();
             void newMessage(WATF message);
             void onlineFriend(WATF message);
-
+            void requestOnFriend(WATF message);
+            void Searchuser(WATF message);
         }
     }
 }

@@ -75,6 +75,20 @@ namespace sp
                             onlineFriend(newmessage);
                             break;
                         }
+                    case (107):
+                        {
+
+                            newmessage.BytesToStruct(ByteMessage);
+                            requestOnFriend(newmessage);
+                            break;
+                        }
+                    case (108):
+                        {
+
+                            newmessage.BytesToStruct(ByteMessage);
+                            Searchuser(newmessage);
+                            break;
+                        }
                     default: break;
                 }
             }
@@ -95,6 +109,16 @@ namespace sp
                 {
                     this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(false, message.MSG, message.info.ID_DEST)));
                 }
+            }
+
+            public void requestOnFriend(WATF message)
+            {
+                this.Dispatcher.Invoke(new Action(() => window.AddrequestInList(message.MSG, message.info.ID_SRC)));
+            }
+
+            public void Searchuser(WATF message)
+            {
+                this.Dispatcher.Invoke(new Action(() => window.AddrequestInsearchPanel(message.MSG, message.info.ID_SRC)));
             }
         }
     }

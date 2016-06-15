@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemList", "ItemList\ItemLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sp", "Sproogl\sp.csproj", "{3E001970-69B8-4C9A-8292-92BD0DF9744F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFriendPanel", "SearchFriendPanel\SearchFriendPanel.csproj", "{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoundItemList", "FoundItemList\FoundItemList.csproj", "{5BB27ED0-7112-40A3-8FD2-927C1F43499C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{3E001970-69B8-4C9A-8292-92BD0DF9744F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E001970-69B8-4C9A-8292-92BD0DF9744F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E001970-69B8-4C9A-8292-92BD0DF9744F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB27ED0-7112-40A3-8FD2-927C1F43499C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB27ED0-7112-40A3-8FD2-927C1F43499C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB27ED0-7112-40A3-8FD2-927C1F43499C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB27ED0-7112-40A3-8FD2-927C1F43499C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,19 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E001970-69B8-4C9A-8292-92BD0DF9744F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{CC12FBA0-E100-49E7-BE4B-D2158F2C071D}</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>sp</RootNamespace>
-    <AssemblyName>sp</AssemblyName>
+    <RootNamespace>SearchFriendPanel</RootNamespace>
+    <AssemblyName>SearchFriendPanel</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,13 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>4_00000_00000.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,40 +48,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Sproogl\App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Sproogl\Client\Client.ActionClient\Client.IActionClient.cs" />
-    <Compile Include="Sproogl\Client\Client.MesgType\Client.MesgType.cs" />
-    <Compile Include="Sproogl\Client\Client.Xml\Xml.cs" />
-    <Compile Include="Sproogl\Client\Client.ActionClient\ActionClient.cs" />
-    <Compile Include="Sproogl\Client\Client\Client.cs" />
-    <Compile Include="Sproogl\Client\Client\IClient.cs" />
-    <Compile Include="Sproogl\Client\Client.Xml\Client.IXml.cs" />
-    <Compile Include="Sproogl\Client\MessageHandler\IMessageHandler.cs" />
-    <Compile Include="Sproogl\Client\MessageHandler\MessageHandler.cs" />
-    <Compile Include="Sproogl\Window\LoginWondow\ILoginWindow.cs" />
-    <Compile Include="Sproogl\Window\LoginWondow\login.xaml.cs">
-      <DependentUpon>login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Sproogl\Client\Client.WATF\Client.WATF.cs" />
-    <Compile Include="Sproogl\Window\MainWindow\IUserControls.cs" />
-    <Compile Include="Sproogl\Window\MainWindow\UserControls.cs" />
-    <Page Include="Sproogl\Window\LoginWondow\login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Sproogl\Window\MainWindow\MainWindow.xaml">
+    <Page Include="UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Sproogl\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sproogl\Window\MainWindow\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -109,16 +74,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Sproogl\App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoundItemList\FoundItemList.csproj">
@@ -129,35 +90,6 @@
       <Project>{1acffed4-bd76-4b0c-bdd9-76ba80fc962a}</Project>
       <Name>ItemList</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SearchFriendPanel\SearchFriendPanel.csproj">
-      <Project>{cc12fba0-e100-49e7-be4b-d2158f2c071d}</Project>
-      <Name>SearchFriendPanel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserChat\UserChat.csproj">
-      <Project>{ca4f3c3e-0d26-41ae-8e66-903aa8f8d5e8}</Project>
-      <Name>UserChat</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="4_00000_00000.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\MainWindow\resources\4_00000_00000.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\MainWindow\resources\default-avatar-plaid-shirt-guy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\MainWindow\resources\phone-call-icon-h_icon_phone_b-1024x1024.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\MainWindow\resources\plus_00000.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\MainWindow\resources\4_00000_00000.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sproogl\Window\LoginWondow\4_00000_00000.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,10 +30,23 @@ namespace sp
         {
             actionClient.sendMessage(message,ID_DEST);
         }
+        public void SendRequestOnFriend(string name, uint id)
+        {
+            actionClient.SendRequestOnFriend(name, id);
+        }
+
+        public void SendAcceptOnFriend(string name, uint id)
+        {
+            actionClient.SendAcceptOnFriend(name, id);
+        }
 
         public Client(MainWindow window , uint id, string login)
         {
             actionClient = new ActionClient(window,id,login);
+        }
+        public void SendSearchFriend(string name)
+        {
+            actionClient.SendSearchFriend(name);
         }
 
     }

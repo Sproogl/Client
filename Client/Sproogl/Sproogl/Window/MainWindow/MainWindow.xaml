@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sp"
       xmlns:chat ="clr-namespace:UserChat;assembly=UserChat"
+      xmlns:seachpanel ="clr-namespace:SearchFriendPanel;assembly=SearchFriendPanel"
 
        
         mc:Ignorable="d"
-        Title="MainWindow" Height="474" Width="838.55" ResizeMode="NoResize" WindowStyle="None" Icon="Resources/4_00000_00000.jpg">
+        Title="MainWindow" Height="478.5" Width="838.55" ResizeMode="NoResize" WindowStyle="None" Icon="Resources/4_00000_00000.jpg">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -79,7 +80,7 @@
     <Border BorderBrush="Gainsboro" BorderThickness="1,0,1,2">
 
         <Grid x:Name="Programm"  MouseMove="borderResizer_MouseMove" MouseUp="borderResizer_MouseUp" MouseDown="Programm_MouseDown"  >
-           
+
             <Grid x:Name="MasterPanel_Back" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
 
                 <chat:Userchat x:Name="Userchat_Back" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" ></chat:Userchat>
@@ -87,8 +88,8 @@
             <Grid x:Name="MasterPanel_Front" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
 
 
-                
-                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" ></chat:Userchat>
+
+                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" Margin="0,3,0,-5" ></chat:Userchat>
             </Grid>
             <Grid x:Name="UserlistBar" Width="290" Margin="0,19,0,0" HorizontalAlignment="Right">
                 <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
@@ -97,8 +98,12 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <Rectangle Fill="#FF164273" Width="255" HorizontalAlignment="Right" ></Rectangle>
+
                 <Grid x:Name="BodyUserList"  Margin="0,73,0,0" >
                     <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
+                </Grid>
+                <Grid x:Name="Searchpanel" Height="382" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,75,-7,0"   >
+                    <seachpanel:SearchPanelControl x:Name="search_panel" HorizontalAlignment="Stretch" Margin="16,0" />
                 </Grid>
                 <Grid x:Name="HederUserList"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="268" Height="67" Margin="0,4,0,0">
                     <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right" Margin="0,0,0,0"></Rectangle>
@@ -118,7 +123,7 @@
                 </Rectangle>
                 <TextBlock x:Name="logo" HorizontalAlignment="Left" Width="60" Text="  Sproogl" Background="#FF164273" Foreground="White"></TextBlock>
             </Grid>
-            <Rectangle x:Name="borderResizer" Height="5" VerticalAlignment="Bottom" Fill="#FFCFCFCF" MouseDown="borderResizer_MouseDown"/>
+
         </Grid>
 
     </Border>

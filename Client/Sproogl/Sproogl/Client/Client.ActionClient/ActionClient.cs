@@ -86,6 +86,69 @@ namespace sp
                 socketSend.Close();
             }
 
+
+            public void SendSearchFriend(string name)
+            {
+                WATF message = new WATF(MegType.SEARCHUSER);
+                message.info.MSG_LEN = name.Length;
+                message.info.ID_SRC = ID;
+                message.info.ID_DEST = 0;
+                message.MSG = name;
+                socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    socketSend.Connect(ip, port);
+                    socketSend.Send(message.StructToBytes());
+                }
+                catch (SocketException e)
+                {
+                    // Console.WriteLine("Eror send message");
+                }
+                socketSend.Close();
+            }
+
+            public void SendRequestOnFriend(string name, uint id)
+            {
+                WATF message = new WATF(MegType.REQUESTONFRIEND);
+                message.info.MSG_LEN = name.Length;
+                message.info.ID_SRC = ID;
+                message.info.ID_DEST = id;
+                message.MSG = name;
+                socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    socketSend.Connect(ip, port);
+                    socketSend.Send(message.StructToBytes());
+                }
+                catch (SocketException e)
+                {
+                    // Console.WriteLine("Eror send message");
+                }
+                socketSend.Close();
+            }
+
+
+            public void SendAcceptOnFriend(string name, uint id)
+            {
+                WATF message = new WATF(MegType.ACCEPTONFRIEND);
+                message.info.MSG_LEN = name.Length;
+                message.info.ID_SRC = ID;
+                message.info.ID_DEST = id;
+                message.MSG = name;
+                socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    socketSend.Connect(ip, port);
+                    socketSend.Send(message.StructToBytes());
+                }
+                catch (SocketException e)
+                {
+                    // Console.WriteLine("Eror send message");
+                }
+                socketSend.Close();
+            }
+
+
             public void listenMesg()
             {
                 Task t = Task.Run(() => listenMesgThread());

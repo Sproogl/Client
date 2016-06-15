@@ -17,6 +17,6 @@ namespace sp
         /// ERROR = 104, 
         /// USERONLINE = 105
         /// </summary>
-        public enum MegType : byte { REGISTRATION = 100, CONNECT, MESSANGE, DISCONNECT, ERROR, USERONLINE};
+        public enum MegType : byte { REGISTRATION = 100, CONNECT, MESSANGE, DISCONNECT, ERROR, USERONLINE,USEROFFLINE,REQUESTONFRIEND,SEARCHUSER,UNACCEPTED,ACCEPTONFRIEND};
     }
 }
