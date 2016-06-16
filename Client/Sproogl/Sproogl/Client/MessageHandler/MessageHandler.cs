@@ -23,11 +23,11 @@ namespace sp
                 for(int i = 16; i<= length;i++)
                 {
                     size++;
-                    if(messageByte[i]==0)
+                    if (messageByte[i] == 0)
                     {
-                        messageByte[i] = 10;
-                        byte[] newbyte = new byte[size+16];
-                        Array.Copy(messageByte, indexStart, newbyte, 0, size+16);
+                       //messageByte[i] = 10;
+                        byte[] newbyte = new byte[size+15];
+                        Array.Copy(messageByte, indexStart, newbyte, 0, size+15);
                         handler(newbyte);
                         size = 0;
                         indexStart = i+1;
@@ -95,19 +95,19 @@ namespace sp
 
             public void newMessage(WATF message)
             {
-                string Lmessage = message.MSG.Remove(message.info.MSG_LEN - 1);
-                this.Dispatcher.Invoke(new Action(() => window.addMessageToAuser(message.info.ID_SRC, message.info.ID_SRC.ToString(), Lmessage)));
+                
+                this.Dispatcher.Invoke(new Action(() => window.addMessageToAuser(message.info.ID_SRC, message.info.ID_SRC.ToString(), message.MSG,true)));
             }
 
             public void onlineFriend(WATF message)
             {
                 if (message.info.type == 105)
                 {
-                    this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(true, message.MSG, message.info.ID_DEST)));
+                    this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(true, message.MSG, message.info.ID_SRC)));
                 }
                 else
                 {
-                    this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(false, message.MSG, message.info.ID_DEST)));
+                    this.Dispatcher.Invoke(new Action(() => window.SetUserConnect(false, message.MSG, message.info.ID_SRC)));
                 }
             }
 

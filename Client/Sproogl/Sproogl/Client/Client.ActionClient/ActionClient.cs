@@ -24,7 +24,7 @@ namespace sp
             string ip { get; set; }
             int port;
             uint ID;
-            string login;
+            public string login;
 
 
             public ActionClient(MainWindow window , uint id,string login)
@@ -157,6 +157,7 @@ namespace sp
             {
                 WATF watfMessage = new WATF(100);
                 WATF newmessage = new WATF();
+                byte[] buffer = new byte[1024];
                 socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 if (ID == 0)  // проверяем, есть ли у нас ID
                 {
@@ -190,9 +191,9 @@ namespace sp
                 {
                     try
                     {
-                        
-                        int length = socketRecv.Receive(recvmessange);
-                        MessageHandler messageHandler = new MessageHandler(window,Dispatcher,recvmessange, length);
+                       
+                        int length = socketRecv.Receive(buffer);
+                        MessageHandler messageHandler = new MessageHandler(window,Dispatcher,buffer, length);
 
                         
                     }

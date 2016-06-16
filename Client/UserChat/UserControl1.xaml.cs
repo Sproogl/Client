@@ -56,8 +56,19 @@ namespace UserChat
 
         public void AddMessagetoMessageList(string userNick, string message)
         {
-            
-            MessageList.Text += Environment.NewLine+ userNick + " : " + message;
+            int size = userNick.Length;
+            int lengtnewNick=0;
+
+            while(size!=0)
+            {
+                if (userNick[size - 1] != '\n' && userNick[size - 1] != '\0')
+                    lengtnewNick++;
+
+                size--;
+            }
+           
+            string newnick = userNick.Substring(0, lengtnewNick);
+            MessageList.Text += Environment.NewLine + newnick + " : " + message;
             
         }
 

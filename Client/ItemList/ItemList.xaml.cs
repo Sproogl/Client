@@ -23,7 +23,19 @@ namespace Itemlist
         {
             InitializeComponent();
             status = "12345";
-            Nick.Text = name;
+            int size = name.Length;
+            int lengtnewNick = 0;
+
+            while (size != 0)
+            {
+                if (name[size - 1] != '\n' && name[size - 1] != '\0')
+                    lengtnewNick++;
+
+                size--;
+            }
+            string newnick = name.Substring(0, lengtnewNick) + "\n";
+
+            Nick.Text = newnick;
             this.ID = ID;
             this.Index = index;
             Indicator = false;
@@ -40,6 +52,10 @@ namespace Itemlist
             Indicator = false;
 
 
+        }
+        public string getNick()
+        {
+            return Nick.Text;
         }
 
         public bool getIndicatornewMesg()

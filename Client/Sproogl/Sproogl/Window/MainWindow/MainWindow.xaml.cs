@@ -279,7 +279,7 @@ namespace sp
             {
                 Userchat chat = (Userchat)sender;
                 client.sendMessage(chat.getNewMessage(), chat.getID());
-                addMessageToAuser(chat.getID(),client.getId().ToString(), chat.getNewMessage());          
+                addMessageToAuser(chat.getID(),client.getlogin(), chat.getNewMessage(),false);          
                 chat.clearNewMessageBox();   
             }  
         }
@@ -293,15 +293,21 @@ namespace sp
         }
 
 
-        public void addMessageToAuser(uint ID,string Unick,string mesg)
+        public void addMessageToAuser(uint ID,string Unick,string mesg,bool isNet)
         {
+            
             for (int i = 0; i < Auser.Count; i++)
             {
                if( Auser[i].getID()== ID)
                 {
+                    if (isNet)
+                    {
+                        Unick = Auser[i].getNick();
+                    }
                     Auser[i].addMessage(Unick, mesg);
                     if (Userchat_Front.getID() == ID)
                     {
+                        
                         Userchat_Front.AddMessagetoMessageList(Unick,mesg);
                     }
                     else
@@ -318,7 +324,7 @@ namespace sp
             {
                 Userchat chat = (Userchat)sender;
                 client.sendMessage(chat.getNewMessage(), chat.getID());
-                addMessageToAuser(chat.getID(), client.getId().ToString(), chat.getNewMessage());
+                addMessageToAuser(chat.getID(), client.getlogin(),chat.getNewMessage(),false);
                 chat.clearNewMessageBox();
             }
         }

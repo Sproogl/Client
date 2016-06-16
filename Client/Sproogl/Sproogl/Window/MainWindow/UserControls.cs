@@ -24,6 +24,12 @@ namespace sp
             ID = id;
             setIndicatorConnected(online);
         }
+
+        public string getNick()
+        {
+            return itemlist.getNick();
+        }
+
         public void addMessage(string Unick, string mesg)
         {
             itemchat.AddMessagetoMessageList(Unick, mesg);

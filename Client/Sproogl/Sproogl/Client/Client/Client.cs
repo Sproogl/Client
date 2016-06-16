@@ -48,6 +48,10 @@ namespace sp
         {
             actionClient.SendSearchFriend(name);
         }
+        public string getlogin()
+        {
+            return actionClient.login;
+        }
 
     }
 }

@@ -61,7 +61,7 @@ namespace sp
             public byte[] StructToBytes()   // in Byte[]
             {
 
-                byte[] byData = System.Text.Encoding.ASCII.GetBytes(MSG + '\0');
+                byte[] byData = System.Text.Encoding.UTF8.GetBytes(MSG + '\0');
 
                 info.MSG_LEN = byData.Length;
 
