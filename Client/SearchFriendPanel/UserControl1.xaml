@@ -9,7 +9,7 @@
     <Grid Background="#FFFA8E40">
         <TextBox x:Name="searchTextBox" Height="20" VerticalAlignment="Top" Margin="3,5,0,0" HorizontalAlignment="Left" Width="208" />
         <ListBox x:Name="foundUsersList" VerticalAlignment="Stretch"  Margin="3,30,2,3"  >
-            <FoundItemList:FoundItem/>
+
 
 
         </ListBox>
