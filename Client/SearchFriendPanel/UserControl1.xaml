@@ -5,15 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SearchFriendPanel"
              xmlns:Itemlist="clr-namespace:Itemlist;assembly=ItemList" xmlns:FoundItemList="clr-namespace:FoundItemList;assembly=FoundItemList" x:Class="SearchFriendPanel.SearchPanelControl"
-             mc:Ignorable="d" Height="426" Width="255.333">
-    <Grid Background="#FFFA8E40">
-        <TextBox x:Name="searchTextBox" Height="20" VerticalAlignment="Top" Margin="3,5,0,0" HorizontalAlignment="Left" Width="208" />
-        <ListBox x:Name="foundUsersList" VerticalAlignment="Stretch"  Margin="3,30,2,3"  >
+             mc:Ignorable="d" Height="426" Width="264">
+    <Grid Background="#FF9BA9AE">
+        <TextBox x:Name="searchTextBox"  Height="24" VerticalAlignment="Top" Margin="1,3,0,0" HorizontalAlignment="Left" Width="216" BorderBrush="#FF324B6D" Foreground="#FF2B67A8" FontFamily="DokChampa" FontSize="16" />
+        <ListBox x:Name="foundUsersList" VerticalAlignment="Stretch"  Margin="1,30,2,3" BorderBrush="#FF27456A" Background="#FF1E4570"  >
 
 
 
         </ListBox>
-        <Button x:Name="searchButton" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Search" Margin="0,5,2,0" Click="searchButton_Click" />
+        <Button x:Name="searchButton" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Search" Margin="0,2,2,0" Click="searchButton_Click" >
+            <Button.Template>
+                <ControlTemplate  TargetType="Button">
+                    <Grid>
+                        <Rectangle Fill="#FF164273" Margin="0,1,0,1" Opacity="0.88">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Direction="310" Opacity="0.4" ShadowDepth="2" BlurRadius="3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" Foreground="White"></Label>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
     </Grid>
 </UserControl>

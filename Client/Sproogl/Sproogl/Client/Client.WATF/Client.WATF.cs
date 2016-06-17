@@ -74,6 +74,7 @@ namespace sp
                 Marshal.Copy(buffer, arr, 0, size);
                 Marshal.FreeHGlobal(buffer);
                 byte[] bytemessange = arr.Concat(byData).ToArray();
+
                 return bytemessange;
             }
 

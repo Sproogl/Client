@@ -128,9 +128,9 @@ namespace sp
             }
         }
 
-        public void SetToMYID(string myid)
+        public void SetMyLogin(string login)
         {
-            MYID.Text = myid;
+            MYLOGIN.Text = login;
         }
 
         public void SetUserConnect(bool st,string name,uint id)
@@ -353,6 +353,21 @@ namespace sp
         private void Programm_MouseDown(object sender, MouseButtonEventArgs e)
         {
             isdownwindow = true;
+        }
+
+        private void BHide_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void TextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            search_panel.Visibility = Visibility.Hidden;
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            search_panel.Visibility = Visibility.Hidden;
         }
     }
 }

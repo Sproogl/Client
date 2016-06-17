@@ -11,15 +11,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="478.5" Width="838.55" ResizeMode="NoResize" WindowStyle="None" Icon="Resources/4_00000_00000.jpg">
     <Window.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
+
+
+        <Style x:Key="Staticbtn" TargetType="Button">
+            <Setter Property="Background" Value="Skyblue">
             </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetProperty="Background.Color">
+                                <ColorAnimation To="Red" Duration="0:0:0:5"></ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
         </Style>
+
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
@@ -47,7 +56,7 @@
 
                                 <Rectangle Fill="Black" Opacity="0.8">
                                     <Rectangle.Effect>
-                                        <BlurEffect/>
+                                        <BlurEffect Radius="7"/>
                                     </Rectangle.Effect>
                                 </Rectangle>
                                 <Rectangle Fill="Red"></Rectangle>
@@ -89,7 +98,7 @@
 
 
 
-                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" Margin="0,3,0,-5" ></chat:Userchat>
+                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" ></chat:Userchat>
             </Grid>
             <Grid x:Name="UserlistBar" Width="290" Margin="0,19,0,0" HorizontalAlignment="Right">
                 <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
@@ -102,19 +111,34 @@
                 <Grid x:Name="BodyUserList"  Margin="0,73,0,0" >
                     <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
                 </Grid>
-                <Grid x:Name="Searchpanel" Height="382" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,75,-7,0"   >
-                    <seachpanel:SearchPanelControl x:Name="search_panel" HorizontalAlignment="Stretch" Margin="16,0" />
+                <Grid x:Name="Searchpanel" Height="384" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-10,73,-26,0"   >
+                    <seachpanel:SearchPanelControl x:Name="search_panel" HorizontalAlignment="Stretch" Margin="16,0,7,-44" />
                 </Grid>
                 <Grid x:Name="HederUserList"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="268" Height="67" Margin="0,4,0,0">
-                    <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right" Margin="0,0,0,0"></Rectangle>
-                    <TextBlock Text="Contacts" Foreground="White" VerticalAlignment="Center" FontSize="30" Margin="43,0,102,5" Width="auto"></TextBlock>
+                    <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Contacts" Foreground="White" VerticalAlignment="Center" FontSize="30" Margin="43,0,102,5" Width="auto" MouseDown="TextBlock_MouseDown"  ></TextBlock>
                     <Image x:Name="AddfrendButton" Source="Resources/plus_00000.png" Width="29" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Margin="0,18,40,19" MouseDown="AddfrendButton_OnMouseDown"></Image>
                 </Grid>
             </Grid>
             <Grid x:Name="Title" Margin="0,0,0,331" Background="Gainsboro" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" VerticalAlignment="Top">
-                <TextBlock x:Name="MYID" Text="0000" HorizontalAlignment="Center" Margin="123,0,677,0" Width="37" RenderTransformOrigin="-5.257,0.525" />
+                <TextBlock x:Name="MYLOGIN" Text="0000" HorizontalAlignment="Center" Margin="123,0,677,0" Width="37" RenderTransformOrigin="-5.257,0.525" />
                 <Button x:Name="Bdisconnect" Visibility="Hidden" Width="75" Background="Red"  HorizontalAlignment="Center" Content="disconnect" Foreground="White" Click="Bdisconnect_Click" BorderBrush="White" />
-                <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_OnClick" Margin="0,0,5,0" Style="{DynamicResource ButtonStyle1}" />
+                <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_OnClick" Margin="0,-2,5,4" Style="{DynamicResource ButtonStyle1}" />
+                <Button x:Name="BHide" Width="38" HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BHide_Click" Margin="0,-10,49,4" >
+                    <Button.Template>
+                        <ControlTemplate  TargetType="Button">
+                            <Grid>
+                                <Rectangle Fill="#FF164273" Margin="0,1,0,1" Opacity="0.88">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Direction="310" Opacity="0.4" ShadowDepth="2" BlurRadius="3"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" Foreground="White"></Label>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
                 <TextBlock x:Name="LoginStatus" Text="Offline" HorizontalAlignment="Left" Width="60" Background="DarkGray" TextAlignment="Center" Foreground="White" Margin="58,0,0,0" MouseDown="LoginStatus_OnMouseDown"></TextBlock>
                 <Rectangle HorizontalAlignment="Left" Width="60" Fill="Black" >
                     <Rectangle.Effect>

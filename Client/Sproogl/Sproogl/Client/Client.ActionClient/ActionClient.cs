@@ -166,7 +166,7 @@ namespace sp
                 }
                 else  // если есть то отправляем его на сервер
                 {
-                    this.Dispatcher.BeginInvoke(new Action(() => window.SetToMYID(ID.ToString())));
+                    this.Dispatcher.BeginInvoke(new Action(() => window.SetMyLogin(login)));
                     watfMessage = new WATF(MegType.CONNECT);
                     watfMessage.info.ID_SRC = ID;
                     watfMessage.MSG = login;                  
