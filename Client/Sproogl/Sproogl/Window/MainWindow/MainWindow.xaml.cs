@@ -275,6 +275,7 @@ namespace sp
 
         private void Userchat_Front_OnClickSend(object sender, ChatItemcontrolArgs e)
         {
+           
             if (LoginStatus.Text == "Online")
             {
                 Userchat chat = (Userchat)sender;

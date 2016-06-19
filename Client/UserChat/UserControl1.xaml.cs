@@ -172,6 +172,11 @@ namespace UserChat
                 RaiseEnterSend(FirstName.Text);
             }
         }
+
+        private void MessageList_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 
     public class ChatItemcontrolArgs : EventArgs // класс которые мы передаём в качестве параметра события

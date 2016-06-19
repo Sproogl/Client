@@ -89,6 +89,10 @@ namespace sp
 
             public void SendSearchFriend(string name)
             {
+                if(name.Length < 3)
+                {
+                    return;
+                }
                 WATF message = new WATF(MegType.SEARCHUSER);
                 message.info.MSG_LEN = name.Length;
                 message.info.ID_SRC = ID;

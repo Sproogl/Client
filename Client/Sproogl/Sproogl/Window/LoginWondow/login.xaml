@@ -8,9 +8,9 @@
         Title="login" Height="500" Width="700" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Icon="4_00000_00000.ico">
     <Grid Background="#FF034357">
         <Label Content="Sproogl" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Height="86" Width="218" Margin="272,81,210,0" RenderTransformOrigin="0.778,-0.16" />
-        <PasswordBox x:Name="passwordbox" VerticalAlignment="Top" Margin="159,246,141,0" Background="#FF034357" BorderBrush="#FFBDBDBD" FontSize="13.333" Foreground="White" Height="24"  />
-        <TextBox Text="LOGIN" x:Name="loginbox" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top"  Background="#FF034357" Foreground="White" BorderBrush="#FFBDBDBD" FontSize="16" Margin="159,217,141,0"/>
-        <Button x:Name="Blogin" Content="login" HorizontalAlignment="Left" Margin="316,407,0,0" VerticalAlignment="Top" Width="86" Click="button_Click" Height="29" BorderBrush="#FFC5C5C5" Background="#FF034357" Foreground="White"  FontSize="14.667"/>
+        <PasswordBox x:Name="passwordbox" TabIndex="2" VerticalAlignment="Top" Margin="159,246,141,0" Background="#FF034357" BorderBrush="#FFBDBDBD" FontSize="13.333" Foreground="White" Height="24"  />
+        <TextBox Text="LOGIN" x:Name="loginbox" TabIndex="1" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top"  Background="#FF034357" Foreground="White" BorderBrush="#FFBDBDBD" FontSize="16" Margin="159,217,141,0"/>
+        <Button x:Name="Blogin" Content="login" TabIndex="3" HorizontalAlignment="Left" Margin="316,407,0,0" VerticalAlignment="Top" Width="86" Click="button_Click" Height="29" BorderBrush="#FFC5C5C5" Background="#FF034357" Foreground="White"  FontSize="14.667"/>
         <Grid x:Name="title"  Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FFD4D4D4" MouseLeftButtonDown="title_MouseLeftButtonDown">
 
             <Button x:Name="BClose" Width="38" HorizontalAlignment="Right" Background="Crimson" Content="X" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Click="BClose_Click" Margin="0,0,7,0" />

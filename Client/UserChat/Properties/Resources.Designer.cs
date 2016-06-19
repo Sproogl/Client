@@ -63,6 +63,16 @@ namespace UserChat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap av2 {
+            get {
+                object obj = ResourceManager.GetObject("av2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap default_avatar_plaid_shirt_guy {
             get {
                 object obj = ResourceManager.GetObject("default_avatar_plaid_shirt_guy", resourceCulture);

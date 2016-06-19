@@ -10,19 +10,37 @@
             <ContentControl >
                 <Border BorderBrush="Silver" BorderThickness="0,1,0,1"/>
             </ContentControl>
-            <Ellipse Width="44" HorizontalAlignment="Left" Margin="248,11,0,17" OpacityMask="#FF018F99" Fill="#FF018F99"/>
-            <Ellipse Width="44" HorizontalAlignment="Left" Margin="298,11,0,17"  Fill="#FF00AC5E"/>
-            <Image x:Name="BCall" Width="40" Height="40" HorizontalAlignment="Left" Margin="250,12,0,18" Source="Resources/IconCall.png" OpacityMask="#FF018F99" MouseDown="PART_call_Click"/>
-            <Image x:Name="BMessage" Width="40" Height="40" HorizontalAlignment="Left" Margin="300,12,0,18" Source="Resources/IconMail.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click">
+            
+            <Button x:Name="Bcall" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,175,10" >
+                <Button.Template>
+                    <ControlTemplate  TargetType="Button">
+                        <Grid>
+                            <Image  Width="45" Height="45" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Source="Resources/IconCall.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            
+            <Button x:Name="Bmessage" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,124,10" >
+                <Button.Template>
+                    <ControlTemplate  TargetType="Button">
+                        <Grid>
+                            <Image  Width="45"  Height="45" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Source="Resources/IconMail.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-            </Image>
+          
             <Rectangle Fill="Black" Width="70" HorizontalAlignment="Left">
                 <Rectangle.Effect>
                     <BlurEffect/>
                 </Rectangle.Effect>
             </Rectangle>
-            <Image x:Name="Avatar" Width="80" HorizontalAlignment="Left" Source="Resources/default-avatar-plaid-shirt-guy.png">
+
+            <Image x:Name="Avatar" Width="70" Height="70" RenderOptions.BitmapScalingMode ="Linear"  HorizontalAlignment="Left" Source="Resources/av2.bmp">
             </Image>
+
             <TextBlock x:Name="FirstName" Text="First name" HorizontalAlignment="Left" Margin="75,6,0,48">
 
             </TextBlock>
@@ -33,18 +51,18 @@
             <ContentControl>
                 <Border BorderBrush="Silver" BorderThickness="0,1" ></Border>
             </ContentControl>
-            <TextBox Grid.Row="0" x:Name="MessageList" TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged"  />
+            <TextBox Grid.Row="0" x:Name="MessageList"  TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged" Margin="-5,0,0,0" FontFamily="Gadugi" FontSize="14.667" Foreground="#FF686868" KeyDown="MessageList_KeyDown"  />
 
 
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-            
-            
+
+
         </Grid>
         <Grid VerticalAlignment="Top" Margin="10,380,10,0" Height="71">
-            <Border BorderBrush="#FF959595" BorderThickness="1,1,1,1">
+            <Border BorderBrush="#FF959595" BorderThickness="1,1,1,1" Margin="-5,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
