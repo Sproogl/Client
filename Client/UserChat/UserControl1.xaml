@@ -10,8 +10,10 @@
             <ContentControl >
                 <Border BorderBrush="Silver" BorderThickness="0,1,0,1"/>
             </ContentControl>
-            
-            <Button x:Name="Bcall" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,175,10" >
+            <Label x:Name="indicatorOnline" Visibility="Visible" Content="Online" HorizontalContentAlignment="Left" VerticalAlignment="Center"  Foreground="#FF52E101" FontFamily="Miriam" Height="23" Margin="70,32,238,15" FontSize="14.667"  />
+            <Label x:Name="indicatorOffline" Visibility="Visible" Content="Offline" HorizontalContentAlignment="Left" VerticalAlignment="Center"  Foreground="#FF7E7E7E" FontFamily="Miriam" Height="23" Margin="70,32,238,15" FontSize="14.667"  />
+
+            <Button x:Name="Bcall" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,55,10" >
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
                         <Grid>
@@ -20,8 +22,8 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            
-            <Button x:Name="Bmessage" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,124,10" >
+
+            <Button x:Name="Bmessage" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,4,10" >
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
                         <Grid>
@@ -31,29 +33,25 @@
                 </Button.Template>
             </Button>
 
-          
+
             <Rectangle Fill="Black" Width="70" HorizontalAlignment="Left">
                 <Rectangle.Effect>
                     <BlurEffect/>
                 </Rectangle.Effect>
             </Rectangle>
 
-            <Image x:Name="Avatar" Width="70" Height="70" RenderOptions.BitmapScalingMode ="Linear"  HorizontalAlignment="Left" Source="Resources/av2.bmp">
+            <Image x:Name="Avatar" Width="70" Height="70" RenderOptions.BitmapScalingMode ="Unspecified"  HorizontalAlignment="Left" Source="Resources/av2.bmp">
             </Image>
 
-            <TextBlock x:Name="FirstName" Text="First name" HorizontalAlignment="Left" Margin="75,6,0,48">
-
-            </TextBlock>
-            <TextBlock x:Name="Email" Text="Email@email.com" HorizontalAlignment="Left" Margin="75,30,0,18"></TextBlock>
+            <TextBlock x:Name="FirstName" Text="First name" HorizontalAlignment="Left" Margin="75,15,0,37" FontFamily="Century Gothic" TextDecorations="{x:Null}" Foreground="#FF018F99" FontSize="14.667" Width="161"/>
 
         </Grid>
-        <Grid  VerticalAlignment="Top" Height="294" Margin="10,83,10,0" >
-            <ContentControl>
-                <Border BorderBrush="Silver" BorderThickness="0,1" ></Border>
-            </ContentControl>
-            <TextBox Grid.Row="0" x:Name="MessageList"  TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged" Margin="-5,0,0,0" FontFamily="Gadugi" FontSize="14.667" Foreground="#FF686868" KeyDown="MessageList_KeyDown"  />
-
-
+        <Grid  VerticalAlignment="Top" Height="294" Margin="0,83,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="187*"/>
+                <ColumnDefinition Width="267*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="0" x:Name="MessageList"  TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged" FontFamily="Gadugi" FontSize="14.667" Foreground="#FF7E7E7E" KeyDown="MessageList_KeyDown" BorderBrush="#FFA2A2A2" Grid.ColumnSpan="2" BorderThickness="0,0,0,1" SelectionBrush="{x:Null}" Margin="6,0,0,0"  />
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -61,32 +59,32 @@
 
 
         </Grid>
-        <Grid VerticalAlignment="Top" Margin="10,380,10,0" Height="71">
-            <Border BorderBrush="#FF959595" BorderThickness="1,1,1,1" Margin="-5,0,0,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <ContentControl BorderThickness="1"/>
-                    <TextBox x:Name="NewmessageBox" Margin="0,0,88,0" Background="{x:Null}" BorderBrush="{x:Null}" KeyDown="NewmessageBox_KeyDown"></TextBox>
-                    <Button x:Name="Bsend" Content="SEND" Height="32" Width="84" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,2,0" Foreground="White" BorderBrush="{x:Null}" FontSize="14.667" Click="Bsend_OnClick" Background="#FFB2B2B2"></Button>
-                    <Button x:Name="Bsmile" Content=":)" Height="32" Width="84" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,3" BorderBrush="{x:Null}" Foreground="White" FontSize="18.667" Background="#FF00B19C" Click="Bsmile_OnClick"></Button>
-                    <Path Data="M362.5,2.75 L363,66" HorizontalAlignment="Right" Margin="0,1.5,89.25,3.25" Stretch="Fill" Stroke="Gray" Width="1.5" StrokeEndLineCap="Square" StrokeLineJoin="Bevel" RenderTransformOrigin="0.5,0.5">
-                        <Path.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="1.004"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Path.RenderTransform>
-                        <Path.Effect>
-                            <BlurEffect Radius="1"/>
-                        </Path.Effect>
-                    </Path>
-                </Grid>
-            </Border>
+        <Grid VerticalAlignment="Top" Margin="10,380,0,0" Height="71">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ContentControl BorderThickness="1"/>
+                <TextBox x:Name="NewmessageBox" Grid.Row="0"  Margin="0,0,119,0" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}"  BorderThickness="0,0,0,0" KeyDown="NewmessageBox_KeyDown"/>
+                <Button x:Name="Bsend" Content="SEND" Height="32" Width="84" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,13,0" Foreground="White" BorderBrush="{x:Null}" FontSize="14.667" Click="Bsend_OnClick" Background="#FFB2B2B2"></Button>
+                <Button x:Name="Bsmile" Content=":)" Height="32" Width="84" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,13,3" BorderBrush="{x:Null}" Foreground="White" FontSize="18.667" Background="#FF00B19C" Click="Bsmile_OnClick"></Button>
+                <Path Data="M362.5,2.75 L363,66" HorizontalAlignment="Right" Margin="0,2.5,116.583,2.25" Stretch="Fill" Stroke="Gray" Width="1.5" StrokeEndLineCap="Square" StrokeLineJoin="Bevel" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="1.004"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Path.Effect>
+                </Path>
+
+            </Grid>
 
         </Grid>
     </Grid>

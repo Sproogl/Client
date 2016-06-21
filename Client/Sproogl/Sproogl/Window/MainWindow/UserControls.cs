@@ -38,6 +38,7 @@ namespace sp
         public void setIndicatorConnected(bool st)
         {
             itemlist.setConnected(st);
+            itemchat.setConnected(st);
         }
         public bool geticatorConnected()
         {

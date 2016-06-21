@@ -111,12 +111,15 @@ namespace Itemlist
             if (st)
             {
                 online = true;
-                GridPanel.Background = System.Windows.Media.Brushes.White;
+                indicatoronline.Visibility = Visibility.Visible;
+                indicatoroffline.Visibility = Visibility.Hidden;
+
             }
             else
             {
                 online = false;
-                GridPanel.Background = System.Windows.Media.Brushes.Silver;
+                indicatoroffline.Visibility = Visibility.Visible;
+                indicatoronline.Visibility = Visibility.Hidden;
             }
         }
 

@@ -10,6 +10,8 @@ namespace UserChat
     {
         private string Nick;
         private uint ID;
+        bool online;
+
         public Userchat()
         {
             InitializeComponent();
@@ -23,6 +25,24 @@ namespace UserChat
             ID = id;
             ReadMsgHistory();
         }
+
+        public void setConnected(bool st)
+        {
+            if (st)
+            {
+                online = true;
+                indicatorOnline.Visibility = Visibility.Visible;
+                indicatorOffline.Visibility = Visibility.Hidden;
+
+            }
+            else
+            {
+                online = false;
+                indicatorOffline.Visibility = Visibility.Visible;
+                indicatorOnline.Visibility = Visibility.Hidden;
+            }
+        }
+
         public void setID(uint ID)
         {
             this.ID = ID;
@@ -35,8 +55,9 @@ namespace UserChat
         {
             FirstName.Text = copy.FirstName.Text;
             MessageList.Text = copy.MessageList.Text;
-            Email = copy.Email;
             Avatar = copy.Avatar;
+            online = copy.online;
+            setConnected(online);
             ID = copy.ID;
         }
         public void setText(string text)

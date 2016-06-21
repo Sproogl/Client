@@ -25,6 +25,7 @@ namespace SearchFriendPanel
         public event EventHandler<FoundItemArgs> AddFriend;
         public event EventHandler<UserItemcontrolArgs> SearchClick;
 
+
         public SearchPanelControl()
         {
             InitializeComponent();

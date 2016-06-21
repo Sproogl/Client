@@ -112,7 +112,7 @@
                     <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
                 </Grid>
                 <Grid x:Name="Searchpanel" Height="384" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-10,73,-26,0"   >
-                    <seachpanel:SearchPanelControl x:Name="search_panel" HorizontalAlignment="Stretch" Margin="16,0,7,-44" />
+                    <seachpanel:SearchPanelControl x:Name="search_panel" Visibility="Hidden" HorizontalAlignment="Stretch" Margin="16,0,7,-44" />
                 </Grid>
                 <Grid x:Name="HederUserList"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="268" Height="67" Margin="0,4,0,0">
                     <Rectangle Fill="#FFFA8E40" Width="265" HorizontalAlignment="Right"/>
