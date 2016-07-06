@@ -92,13 +92,13 @@
 
             <Grid x:Name="MasterPanel_Back" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
 
-                <chat:Userchat x:Name="Userchat_Back" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" ></chat:Userchat>
+                <chat:Userchat x:Name="Userchat_Back" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_OnClickSend" ></chat:Userchat>
             </Grid>
             <Grid x:Name="MasterPanel_Front" HorizontalAlignment="Left" Width="568" Margin="600,20,0,0">
 
 
 
-                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_EnterSend" ></chat:Userchat>
+                <chat:Userchat x:Name="Userchat_Front" HorizontalAlignment="Left" Width="568" ClickSend="Userchat_Front_OnClickSend" EnterSend="Userchat_Front_OnClickSend" ></chat:Userchat>
             </Grid>
             <Grid x:Name="UserlistBar" Width="290" Margin="0,19,0,0" HorizontalAlignment="Right">
                 <Rectangle Fill="Black" Width="255" HorizontalAlignment="Right" Opacity="0.8">
@@ -109,7 +109,7 @@
                 <Rectangle Fill="#FF164273" Width="255" HorizontalAlignment="Right" ></Rectangle>
 
                 <Grid x:Name="BodyUserList"  Margin="0,73,0,0" >
-                    <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="290" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
+                    <ListBox x:Name="UserList" HorizontalAlignment="Right" MaxWidth="270" ScrollViewer.CanContentScroll="False"  ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,-4" BorderThickness="1,1,0,3"  />
                 </Grid>
                 <Grid x:Name="Searchpanel" Height="384" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-10,73,-26,0"   >
                     <seachpanel:SearchPanelControl x:Name="search_panel" Visibility="Hidden" HorizontalAlignment="Stretch" Margin="16,0,7,-44" />

@@ -56,6 +56,8 @@ namespace sp
                         }
                     case (102):
                         {
+                           
+
                             newmessage.BytesToStruct(ByteMessage);
                             newMessage(newmessage);
                             break;

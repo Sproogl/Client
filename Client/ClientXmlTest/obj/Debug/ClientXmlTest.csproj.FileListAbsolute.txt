@@ -24,3 +24,7 @@ E:\client\Client\ClientXmlTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.
 E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.csprojResolveAssemblyReference.cache
 E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.dll
 E:\client\Client\ClientXmlTest\obj\Debug\ClientXmlTest.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\SearchFriendPanel.dll
+E:\client\Client\ClientXmlTest\bin\Debug\FoundItemList.dll
+E:\client\Client\ClientXmlTest\bin\Debug\SearchFriendPanel.pdb
+E:\client\Client\ClientXmlTest\bin\Debug\FoundItemList.pdb

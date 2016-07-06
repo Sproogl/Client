@@ -68,7 +68,7 @@ namespace sp
             }
             public void sendMessage(string message, uint ID_DEST)
             {
-                WATF watfMessage = new WATF(MegType.MESSANGE);
+                WATF watfMessage = new WATF(MegType.MESSAGE);
                 watfMessage.info.MSG_LEN = message.Length;
                 watfMessage.MSG = message;
                 watfMessage.info.ID_DEST = ID_DEST;
@@ -76,6 +76,8 @@ namespace sp
                 socketSend = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 try
                 {
+                    
+                    
                     socketSend.Connect(ip, port);
                     socketSend.Send(watfMessage.StructToBytes());
                 }

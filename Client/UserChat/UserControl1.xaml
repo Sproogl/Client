@@ -6,32 +6,23 @@
              xmlns:local="clr-namespace:UserChat"
              mc:Ignorable="d" d:DesignWidth="474" Height="454">
     <Grid Background="White">
-        <Grid Background="White" VerticalAlignment="Top" Height="70" Margin="0,8,0,0">
+        <Grid Background="White" VerticalAlignment="Top" Height="63" Margin="0,6,0,0">
             <ContentControl >
                 <Border BorderBrush="Silver" BorderThickness="0,1,0,1"/>
             </ContentControl>
             <Label x:Name="indicatorOnline" Visibility="Visible" Content="Online" HorizontalContentAlignment="Left" VerticalAlignment="Center"  Foreground="#FF52E101" FontFamily="Miriam" Height="23" Margin="70,32,238,15" FontSize="14.667"  />
-            <Label x:Name="indicatorOffline" Visibility="Visible" Content="Offline" HorizontalContentAlignment="Left" VerticalAlignment="Center"  Foreground="#FF7E7E7E" FontFamily="Miriam" Height="23" Margin="70,32,238,15" FontSize="14.667"  />
+            <Label x:Name="indicatorOffline" Visibility="Visible" Content="Offline" HorizontalContentAlignment="Left" VerticalAlignment="Center"  Foreground="#FF8B8B8B" FontFamily="Miriam" Height="23" Margin="70,32,238,15" FontSize="14.667"  />
 
-            <Button x:Name="Bcall" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,55,10" >
+            <Button x:Name="Bcall" Width="35" HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="White" Margin="0,15,69,15" >
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
-                        <Grid>
-                            <Image  Width="45" Height="45" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Source="Resources/IconCall.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click" />
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image  Width="Auto" Height="Auto" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Resources/IconCall.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click" Margin="0,0,0,0"  />
                         </Grid>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
 
-            <Button x:Name="Bmessage" Width="51"  HorizontalAlignment="Right" Background="#FF164172" Content="__" Foreground="White" FontFamily="Verdana" BorderBrush="{x:Null}" Margin="0,6,4,10" >
-                <Button.Template>
-                    <ControlTemplate  TargetType="Button">
-                        <Grid>
-                            <Image  Width="45"  Height="45" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Source="Resources/IconMail.png" OpacityMask="#FF00AC5E" MouseDown="PART_message_Click" />
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
 
 
             <Rectangle Fill="Black" Width="70" HorizontalAlignment="Left">
@@ -43,15 +34,14 @@
             <Image x:Name="Avatar" Width="70" Height="70" RenderOptions.BitmapScalingMode ="Unspecified"  HorizontalAlignment="Left" Source="Resources/av2.bmp">
             </Image>
 
-            <TextBlock x:Name="FirstName" Text="First name" HorizontalAlignment="Left" Margin="75,15,0,37" FontFamily="Century Gothic" TextDecorations="{x:Null}" Foreground="#FF018F99" FontSize="14.667" Width="161"/>
+            <TextBlock x:Name="FirstName" Text="First name" HorizontalAlignment="Left" Margin="75,6,0,37" FontFamily="Century Gothic" TextDecorations="{x:Null}" Foreground="#FF2886C7" FontSize="14.667" Width="161"/>
 
         </Grid>
         <Grid  VerticalAlignment="Top" Height="294" Margin="0,83,0,0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="187*"/>
-                <ColumnDefinition Width="267*"/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" x:Name="MessageList"  TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged" FontFamily="Gadugi" FontSize="14.667" Foreground="#FF7E7E7E" KeyDown="MessageList_KeyDown" BorderBrush="#FFA2A2A2" Grid.ColumnSpan="2" BorderThickness="0,0,0,1" SelectionBrush="{x:Null}" Margin="6,0,0,0"  />
+            <ContentControl >
+                <Border BorderBrush="Silver" BorderThickness="0,0,0,1"/>
+            </ContentControl>
+            <TextBox Grid.Row="0" x:Name="MessageList"  TextWrapping="Wrap"  AcceptsReturn="True" TextChanged="MessageList_TextChanged" FontFamily="Gadugi" FontSize="14.667" Foreground="#FF7E7E7E" KeyDown="MessageList_KeyDown" BorderBrush="#FFA2A2A2" BorderThickness="0" SelectionBrush="{x:Null}" Margin="6,0,0,4"  />
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -59,9 +49,9 @@
 
 
         </Grid>
-        <Grid VerticalAlignment="Top" Margin="10,380,0,0" Height="71">
+        <Grid VerticalAlignment="Top" Margin="0,377,0,0" Height="77">
 
-            <Grid>
+            <Grid Margin="6,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>

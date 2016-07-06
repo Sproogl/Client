@@ -159,6 +159,18 @@
   <ItemGroup>
     <Resource Include="Sproogl\Window\LoginWondow\4_00000_00000.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\6038_55 %28mp3cut.net%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\New track 2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\new.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

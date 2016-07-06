@@ -12,11 +12,11 @@ namespace sp
         /// type message 
         /// REGISTRATION = 100, 
         /// CONNECT = 101, 
-        /// MESSANGE = 102, 
+        /// MESSAGE = 102, 
         /// DISCONNECT = 103, 
         /// ERROR = 104, 
         /// USERONLINE = 105
         /// </summary>
-        public enum MegType : byte { REGISTRATION = 100, CONNECT, MESSANGE, DISCONNECT, ERROR, USERONLINE,USEROFFLINE,REQUESTONFRIEND,SEARCHUSER,UNACCEPTED,ACCEPTONFRIEND};
+        public enum MegType : byte { REGISTRATION = 100, CONNECT, MESSAGE, DISCONNECT, ERROR, USERONLINE,USEROFFLINE,REQUESTONFRIEND,SEARCHUSER,UNACCEPTED,ACCEPTONFRIEND};
     }
 }

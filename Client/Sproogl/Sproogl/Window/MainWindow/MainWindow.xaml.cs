@@ -9,6 +9,8 @@ using UserChat;
 using System.IO;
 using SearchFriendPanel;
 using FoundItemList;
+using System.Media;
+using System.Windows.Media.Imaging;
 
 namespace sp
 {
@@ -28,7 +30,6 @@ namespace sp
         double _AnimationOpasity_opasity;
         bool isdownResize = false;
         bool isdownwindow = false;
-
         private bool connectStatus;
 
         private System.Windows.Threading.DispatcherTimer timer;
@@ -79,6 +80,7 @@ namespace sp
         public void AddrequestInList(string name, uint id)
         {
             FoundItem item = new FoundItem(name, id);
+            item.Width = 236.5;
             item.Addclick += Item_Addclick;
             UserList.Items.Add(item);
         }
@@ -203,8 +205,13 @@ namespace sp
 
         private void UserControl1_OnMessageClick(object sender, UserItemcontrolArgs e)
         {
+            
             _AnimationSlide_MerginRight = 600;
             ItemList send = (ItemList) sender;
+            if(send.getID() == Userchat_Front.getID())
+            {
+                return;
+            }
             if(send.getIndicatornewMesg())
             {
                 send.setIndictorMessage(false);
@@ -275,13 +282,13 @@ namespace sp
 
         private void Userchat_Front_OnClickSend(object sender, ChatItemcontrolArgs e)
         {
-           
-            if (LoginStatus.Text == "Online")
+            Userchat chat = (Userchat)sender;
+            String newMessage = chat.getNewMessage();
+            if ( newMessage.Length !=0 && LoginStatus.Text == "Online")
             {
-                Userchat chat = (Userchat)sender;
-                client.sendMessage(chat.getNewMessage(), chat.getID());
-                addMessageToAuser(chat.getID(),client.getlogin(), chat.getNewMessage(),false);          
-                chat.clearNewMessageBox();   
+                    client.sendMessage(newMessage, chat.getID());
+                    addMessageToAuser(chat.getID(), client.getlogin(), newMessage, false);
+                    chat.clearNewMessageBox();
             }  
         }
 
@@ -310,25 +317,37 @@ namespace sp
                     {
                         
                         Userchat_Front.AddMessagetoMessageList(Unick,mesg);
+                        if(WindowState == WindowState.Minimized)
+                        {
+                            SoundNewmessage();
+
+                        }
                     }
                     else
                     {
                         Auser[i].setIndicatorNewMesg(true);
+
+                            SoundNewmessage();
+                        
                     }
                 }    
             }
         }
 
-        private void Userchat_Front_EnterSend(object sender, ChatItemcontrolArgs e)
+        public void SoundNewmessage()
         {
-            if (LoginStatus.Text == "Online")
+            SoundPlayer sp;
+            try {
+                sp = new SoundPlayer(Properties.Resources._new);
+                
+                sp.Play();
+            }catch(Exception ex)
             {
-                Userchat chat = (Userchat)sender;
-                client.sendMessage(chat.getNewMessage(), chat.getID());
-                addMessageToAuser(chat.getID(), client.getlogin(),chat.getNewMessage(),false);
-                chat.clearNewMessageBox();
+
             }
+            
         }
+
 
         private void borderResizer_MouseDown(object sender, MouseButtonEventArgs e)
         {

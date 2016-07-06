@@ -190,7 +190,7 @@ namespace UserChat
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                RaiseEnterSend(FirstName.Text);
+                RaiseSendClick(FirstName.Text);
             }
         }
 
