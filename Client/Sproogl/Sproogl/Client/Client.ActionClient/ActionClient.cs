@@ -49,7 +49,7 @@ namespace sp
             
             public void disconnectFromserver()
             {
-                WATF message = new WATF(MegType.DISCONNECT);
+                CPS message = new CPS(MegType.DISCONNECT);
                 message.info.MSG_LEN = 0;
                 message.MSG = "none";
                 message.info.ID_DEST = 0;
@@ -68,7 +68,7 @@ namespace sp
             }
             public void sendMessage(string message, uint ID_DEST)
             {
-                WATF watfMessage = new WATF(MegType.MESSAGE);
+                CPS watfMessage = new CPS(MegType.MESSAGE);
                 watfMessage.info.MSG_LEN = message.Length;
                 watfMessage.MSG = message;
                 watfMessage.info.ID_DEST = ID_DEST;
@@ -95,7 +95,7 @@ namespace sp
                 {
                     return;
                 }
-                WATF message = new WATF(MegType.SEARCHUSER);
+                CPS message = new CPS(MegType.SEARCHUSER);
                 message.info.MSG_LEN = name.Length;
                 message.info.ID_SRC = ID;
                 message.info.ID_DEST = 0;
@@ -115,7 +115,7 @@ namespace sp
 
             public void SendRequestOnFriend(string name, uint id)
             {
-                WATF message = new WATF(MegType.REQUESTONFRIEND);
+                CPS message = new CPS(MegType.REQUESTONFRIEND);
                 message.info.MSG_LEN = name.Length;
                 message.info.ID_SRC = ID;
                 message.info.ID_DEST = id;
@@ -136,7 +136,7 @@ namespace sp
 
             public void SendAcceptOnFriend(string name, uint id)
             {
-                WATF message = new WATF(MegType.ACCEPTONFRIEND);
+                CPS message = new CPS(MegType.ACCEPTONFRIEND);
                 message.info.MSG_LEN = name.Length;
                 message.info.ID_SRC = ID;
                 message.info.ID_DEST = id;
@@ -161,19 +161,19 @@ namespace sp
             }
             public void listenMesgThread() // подключаем слушающий сокет
             {
-                WATF watfMessage = new WATF(100);
-                WATF newmessage = new WATF();
+                CPS watfMessage = new CPS(100);
+                CPS newmessage = new CPS();
                 byte[] buffer = new byte[1024];
                 socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 if (ID == 0)  // проверяем, есть ли у нас ID
                 {
-                    watfMessage = new WATF(MegType.REGISTRATION);
+                    watfMessage = new CPS(MegType.REGISTRATION);
                     watfMessage.MSG = "registration";
                 }
                 else  // если есть то отправляем его на сервер
                 {
                     this.Dispatcher.BeginInvoke(new Action(() => window.SetMyLogin(login)));
-                    watfMessage = new WATF(MegType.CONNECT);
+                    watfMessage = new CPS(MegType.CONNECT);
                     watfMessage.info.ID_SRC = ID;
                     watfMessage.MSG = login;                  
                 }
@@ -215,7 +215,7 @@ namespace sp
             }
             public uint getIDfromByte(byte[] arr)
             {
-                WATF message = new WATF();
+                CPS message = new CPS();
                 uint id;
                 message.BytesToStruct(arr);
                 id = message.info.ID_SRC;

@@ -111,7 +111,7 @@ namespace sp
         public void sendMessage(string message, uint ID_DEST)
         {
             System.Threading.Thread.Sleep(1000);
-            Client.WATF watfMessage = new Client.WATF(Client.MegType.REGISTRATION);
+            Client.CPS watfMessage = new Client.CPS(Client.MegType.REGISTRATION);
             watfMessage.info.MSG_LEN = message.Length;
             watfMessage.MSG = message;
             watfMessage.info.ID_DEST = ID_DEST;
@@ -130,7 +130,7 @@ namespace sp
 
         public uint getIDfromByte(byte[] arr)
         {
-            Client.WATF message = new Client.WATF();
+            Client.CPS message = new Client.CPS();
             uint id;
             message.BytesToStruct(arr);
             id = message.info.ID_SRC;

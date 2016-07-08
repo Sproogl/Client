@@ -12,10 +12,10 @@ namespace sp
         {
             void handler(byte[] ByteMessage);
             void connection();
-            void newMessage(WATF message);
-            void onlineFriend(WATF message);
-            void requestOnFriend(WATF message);
-            void Searchuser(WATF message);
+            void newMessage(CPS message);
+            void onlineFriend(CPS message);
+            void requestOnFriend(CPS message);
+            void Searchuser(CPS message);
         }
     }
 }

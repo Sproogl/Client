@@ -17,10 +17,10 @@ namespace ServerTest
         [TestMethod]
         public void TestMethod1()
         {
-            Client.WATF watfMessage;
+            Client.CPS watfMessage;
             byte[] buffer = new byte[1024];
            Socket socketRecv = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            watfMessage = new Client.WATF(Client.MegType.CONNECT);
+            watfMessage = new Client.CPS(Client.MegType.CONNECT);
             watfMessage.info.ID_SRC = 15;
             watfMessage.MSG = "admin";
 

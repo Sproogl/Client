@@ -46,7 +46,7 @@ namespace sp
 
             public void handler(byte[] ByteMessage)
             {
-                WATF newmessage = new WATF();
+                CPS newmessage = new CPS();
                 switch (ByteMessage[0])
                 {
                     case (101):
@@ -95,13 +95,13 @@ namespace sp
                 }
             }
 
-            public void newMessage(WATF message)
+            public void newMessage(CPS message)
             {
                 
                 this.Dispatcher.Invoke(new Action(() => window.addMessageToAuser(message.info.ID_SRC, message.info.ID_SRC.ToString(), message.MSG,true)));
             }
 
-            public void onlineFriend(WATF message)
+            public void onlineFriend(CPS message)
             {
                 if (message.info.type == 105)
                 {
@@ -113,12 +113,12 @@ namespace sp
                 }
             }
 
-            public void requestOnFriend(WATF message)
+            public void requestOnFriend(CPS message)
             {
                 this.Dispatcher.Invoke(new Action(() => window.AddrequestInList(message.MSG, message.info.ID_SRC)));
             }
 
-            public void Searchuser(WATF message)
+            public void Searchuser(CPS message)
             {
                 this.Dispatcher.Invoke(new Action(() => window.AddrequestInsearchPanel(message.MSG, message.info.ID_SRC)));
             }

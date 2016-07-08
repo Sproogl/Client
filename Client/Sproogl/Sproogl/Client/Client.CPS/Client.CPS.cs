@@ -30,19 +30,19 @@ namespace sp
 
         }
 
-        public struct WATF
+        public struct CPS
         {
 
             public msginfo info;
             public string MSG;
-            public WATF(MegType type)
+            public CPS(MegType type)
             {
                 info = new msginfo((byte)type);
                 MSG = "connect";
                 info.MSG_LEN = MSG.Length;
             }
 
-            public WATF(byte i)
+            public CPS(byte i)
             {
                 info = new msginfo(i);
                 MSG = "connect";
@@ -90,7 +90,7 @@ namespace sp
             public void BytesToStruct(byte[] arr)   // in WATF
             {
                 IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(msginfo)));
-                WATF myStruct = new WATF(1);
+                CPS myStruct = new CPS(1);
                 try
                 {
                     int sizeinfo = Marshal.SizeOf(typeof(msginfo));

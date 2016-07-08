@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Microsoft.Win32;
 using Itemlist;
 using UserChat;
 using System.IO;
-using SearchFriendPanel;
 using FoundItemList;
 using System.Media;
-using System.Windows.Media.Imaging;
 
 namespace sp
 {

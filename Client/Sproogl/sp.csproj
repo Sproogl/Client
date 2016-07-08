@@ -72,7 +72,7 @@
     <Compile Include="Sproogl\Window\LoginWondow\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sproogl\Client\Client.WATF\Client.WATF.cs" />
+    <Compile Include="Sproogl\Client\Client.CPS\Client.CPS.cs" />
     <Compile Include="Sproogl\Window\MainWindow\IUserControls.cs" />
     <Compile Include="Sproogl\Window\MainWindow\UserControls.cs" />
     <Page Include="Sproogl\Window\LoginWondow\login.xaml">

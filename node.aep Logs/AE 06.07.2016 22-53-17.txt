@@ -1,12 +1,0 @@
-Adobe After Effects v13.8 Windows 64 render log for project “node.aep”
-
-Rendering started on 06.07.2016 at 22:53:17
-
-  06.07.2016 22:53:17: Starting composition “Registration”.
-
-  Output To: E:\client\Connection\Registration_[#####].jpg    06.07.2016 22:53:17: Finished composition “Registration”.
-
-
-  Total Time Elapsed: 0 Seconds
-Log closed on 06.07.2016 at 22:53:17
-
